@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="Prodial Delivery" />
+	<meta name="keywords"
+		content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, Flash Able, Flash Able bootstrap admin template">
+	<meta name="author" content="Codedthemes" />
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+	<!-- animation css -->
+	<link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<title>Prodial - Food Delivery</title>
+    
+    <style>
+        body{
+            overflow-x: hidden;
+            overflow-y: visible;
+        }
+        .h-img{
+            height: 50px;
+        }
+        .m-img{
+            height: 80px;
+            border-radius: 10%;
+        }
+        .btn{
+            width: 20%;
+            height: 30px;
+            font-size: small;
+            padding: 5px;
+        }
+        table{
+            overflow: scroll;
+        }
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
+		<div class="navbar-wrapper ">
+			<div class="navbar-brand header-logo bg-c-yellow">
+				<a href="index.html" class="b-brand">
+					<img class="h-img" src="../assets/images/logo.png" alt="" class="logo images">
+				</a>
+				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+			</div>
+			<div class="navbar-content scroll-div">
+				<ul class="nav pcoded-inner-navbar">
+					<li class="nav-item pcoded-menu-caption">
+						<label>Navigation</label>
+					</li>
+					<li class="nav-item">
+						<a href="index.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="user.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="restaurant.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="category.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+
+	<!-- [ Header ] start -->
+	<!-- [ Header ] end -->
+
+	<!-- [ Main Content ] start -->
+	<div class="pcoded-main-container">
+		<div class="pcoded-wrapper">
+			<div class="pcoded-content">
+				<div class="pcoded-inner-content">
+					<div class="main-body">
+						<div class="page-wrapper">
+							<!-- [ breadcrumb ] start -->
+							<div class="page-header">
+								<div class="page-block">
+									<div class="row align-items-center">
+										<div class="col-md-10">
+											<div class="page-header-title">
+												<h5>Categories</h5>
+											</div>
+											<ul class="breadcrumb">
+												<li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="#!">Available Categories</a></li>
+											</ul>
+										</div>
+                                        <div class="input-group col-md-2">
+                                            <input id="myInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                              aria-describedby="search-addon" onkeyup="search()"/>
+                                            <!-- <button type="button" class="btn-outline-primary">search</button> -->
+                                        </div>
+									</div>
+								</div>
+							</div>
+							<!-- [ breadcrumb ] end -->
+							<!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Categories</h5>
+                                            <span class="d-block m-t-5">Table containing <code>categories</code> details</span>
+                                        </div>
+                                        <div class="card-body table-border-style">
+                                            <div class="table-responsive">
+                                                <table id="user" class="table table-hover">
+                                                    
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Add Category</h5>
+                                            <span class="d-block m-t-5">Add <code>new category</code> details here</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label>Category Name</label>
+                                                    <input id="rname" type="text" class="form-control" placeholder="Name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Category Image</label>
+                                                    <input id="rlogo" type="file" class="form-control" placeholder="Restaurant Banner" required>
+                                                </div>
+                                                <br>
+                                                <button id="rsave" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Add Category</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							<!-- [ Main Content ] end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- [ Main Content ] end -->
+
+	<!-- Required Js -->
+	<script src="../assets/js/vendor-all.min.js"></script>
+	<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/js/pcoded.min.js"></script>
+
+    <script>
+        const search = () => {
+            let filter = document.getElementById("myInput").value.toUpperCase();
+            let myTable = document.getElementById("user");
+            let tr = myTable.getElementsByTagName('tr');
+
+            for(var i=0;i<tr.length;i++){
+                let td = tr[i].getElementsByTagName('td')[2];
+                let td1 = tr[i].getElementsByTagName('td')[3];
+                if(td && td1){
+                    let textvalue = td.textContent || td.innerHTML;
+                    let textvalue1 = td1.textContent || td1.innerHTML;
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)==0){
+                        tr[i].style.display="";
+                    }
+                    else{
+                        tr[i].style.display="none";
+                    }
+                }
+            }
+        }
+        var names=[];
+        function addRowHandlers() {
+            var table = document.getElementById("user");
+            var rows = table.getElementsByTagName("tr");
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = table.rows[i];
+                var createClickHandler = function(row) {
+                return function() {
+                    var img =  row.getElementsByTagName("td")[1].getElementsByTagName("img")[0].getAttribute("src");
+                    var name =  row.getElementsByTagName("td")[2].textContent;
+                    var phone =  row.getElementsByTagName("td")[3].textContent;
+                    var email =  row.getElementsByTagName("td")[4].textContent;
+                    var address =  row.getElementsByTagName("td")[5].textContent;
+                    var description =  row.getElementsByTagName("td")[6].textContent;
+                    var rating =  row.getElementsByTagName("td")[7].textContent;
+                    var total_rating =  row.getElementsByTagName("td")[8].textContent;
+                    var accno =  row.getElementsByTagName("td")[10].textContent;
+                    var ifsc =  row.getElementsByTagName("td")[11].textContent;
+                    var bname =  row.getElementsByTagName("td")[12].textContent;
+                    var status =  row.getElementsByTagName("td")[13].textContent;
+                    var category =  row.getElementsByTagName("td")[14].textContent;
+
+                    document.getElementById("log").src = img;
+                    document.getElementById("title").innerHTML = name;
+                    document.getElementById("desc").innerHTML = description;
+                    document.getElementById("phone").innerHTML = "<hr>Phone: "+phone;
+                    document.getElementById("email").innerHTML = email;                  
+                    document.getElementById("address").innerHTML = address;
+                    document.getElementById("rating").innerHTML = rating+"  "+'<i class="fas fa-star text-c-yellow f-18"></i>';
+                    document.getElementById("total_rating").innerHTML = "("+total_rating+" Ratings)";
+                    document.getElementById("accno").innerHTML = "Account Number: "+accno;
+                    document.getElementById("ifsc").innerHTML = "IFSC: "+ifsc;
+                    document.getElementById("bname").innerHTML = bname;
+                    //document.getElementById("category").innerHTML = category;
+                    var str1="";
+                    let carr = category.split(",");
+
+                    function func(item, index) {
+                        for(let i=0;i<names.length;i++){
+                            var obj = names[i];
+                            if(obj.id==item)
+                            {
+                                str1=str1+obj.name+", ";
+                            }
+                        }
+                    }
+
+                    carr.forEach(func);
+                    document.getElementById("category").innerHTML = str1;
+                    if(status==="1")
+                    {
+                        document.getElementById("status").innerHTML = "Open";
+                        document.getElementById("status").className = "badge badge-pill badge-success";
+                    }
+                    else
+                    {
+                        document.getElementById("status").innerHTML = "Closed"
+                        document.getElementById("status").className = "badge badge-pill badge-danger";
+                    }    
+                    };
+                };
+              currentRow.onclick = createClickHandler(currentRow);
+            }
+        }
+        $(document).ready(function(){
+            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Action</th></thead><tbody>";
+            $.ajax({
+                type: 'GET',
+                url: 'https://dtechblradmin.xyz/prodial/api/category.php',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.success);
+                    if(response.success){
+                        $.each(response.data, function(index,item){
+                            str=str+ "<tr><td><h4>"+(index+1)+"</h4></td><td><img class='m-img' src="+item['image']+"></td><td><h3>"+item["name"]+"</h3></td><td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td></tr>";
+                        })
+                        document.getElementById("user").innerHTML = str+"</tbody>";
+                    }
+                    else{
+                        console.log(response.message);
+                    }
+                    addRowHandlers();
+                }
+            });
+            
+            document.getElementById("rsave").onclick= function() {
+                var name = document.getElementById("rname").value;
+
+                var file= $('#rlogo')[0].files[0];
+                var fd = new FormData();
+
+                fd.append('name',name);
+                fd.append('file',file);
+                
+                
+                $.ajax({
+                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        console.log(response.success);
+                        window.location.reload()
+                    }
+                });
+            };
+        });
+    </script>
+</body>
+
+</html>

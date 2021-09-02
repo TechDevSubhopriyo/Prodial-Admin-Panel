@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="Prodial Delivery" />
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+	<!-- animation css -->
+	<link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<title>Prodial - Food Delivery</title>
+    
+    <style>
+        body{
+            overflow-x: hidden;
+            overflow-y: visible;
+        }
+        .h-img{
+            height: 50px;
+            border-radius: 5%;
+        }
+        .m-img{
+            width: 80%;
+            margin: 10%;
+            border-radius: 10%;
+        }
+        .btn{
+            width: 40%;
+            height: 30px;
+            font-size: small;
+            padding: 5px;
+        }
+        table{
+            overflow: scroll;
+        }
+
+    </style>
+    <script>
+		try {
+			  const cookieValue = document.cookie
+			  .split('; ')
+			  .find(row => row.startsWith('user='))
+			  .split('=')[1];
+				console.log(cookieValue);
+				if(cookieValue==""){
+					window.location.href = "login";
+				}
+			}
+			catch(err) {
+			  window.location.href = "login";
+			}
+	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.css">
+    <script src="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.js"></script>  
+</head>
+
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
+		<div class="navbar-wrapper ">
+			<div class="navbar-brand header-logo bg-c-yellow">
+				<a href="index" class="b-brand">
+					<img class="h-img" src="assets/images/logo.png" alt="" class="logo images">
+				</a>
+				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+			</div>
+			<div class="navbar-content scroll-div">
+				<ul class="nav pcoded-inner-navbar">
+					<li class="nav-item pcoded-menu-caption">
+						<label>Navigation</label>
+					</li>
+					<li class="nav-item">
+						<a href="index" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="user" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="restaurant" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="category" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="product" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+
+	<!-- [ Header ] start -->
+	<!-- [ Header ] end -->
+
+	<!-- [ Main Content ] start -->
+	<div class="pcoded-main-container">
+		<div class="pcoded-wrapper">
+			<div class="pcoded-content">
+				<div class="pcoded-inner-content">
+					<div class="main-body">
+						<div class="page-wrapper">
+							<!-- [ breadcrumb ] start -->
+							<div class="page-header">
+								<div class="page-block">
+									<div class="row align-items-center">
+										<div class="col-md-10">
+											<div class="page-header-title">
+												<h5>Restaurants</h5>
+											</div>
+											<ul class="breadcrumb">
+												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="#!">Restaurants Details</a></li>
+											</ul>
+										</div>
+                                        <div class="input-group col-md-2">
+                                            <input id="myInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                              aria-describedby="search-addon" onkeyup="search()"/>
+                                            <!-- <button type="button" class="btn-outline-primary">search</button> -->
+                                        </div>
+									</div>
+								</div>
+							</div>
+							<!-- [ breadcrumb ] end -->
+							<!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Restaurants Table</h5>
+                                            <span class="d-block m-t-5">Table containing <code>restaurants</code> details</span>
+                                        </div>
+                                        <div class="card-body table-border-style">
+                                            <div class="table-responsive">
+                                                <table id="user" class="table table-hover">
+                                                    
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card" id="ecard">
+                                        <div class="card-header">
+                                            <h5>Edit Restaurant</h5>
+                                            <button id="closeupdate" class="btn btn-danger" style="float: right; width: 10%" type="button"  data-toggle="tooltip"><b>X</b></button>
+                                            <span class="d-block m-t-5">Edit <code>restaurant</code> details here</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input id="eid" type="hidden" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Restaurant Name</label>
+                                                    <input id="ename" type="text" class="form-control" placeholder="Name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Restaurant Logo</label>
+                                                    <input id="elogo" type="file" class="form-control" placeholder="Restaurant Banner" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="edesc">Description</label>
+                                                    <textarea id="edesc" class="form-control" placeholder="A Brief Description" rows="3" required></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input id="ephone" type="phone" class="form-control" placeholder="Restaurant Phone Number" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input id="eemail" type="email" class="form-control" placeholder="Restaurant Mail ID" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="eadr">Address</label>
+                                                    <textarea class="form-control" id="eadr" placeholder="Restaurant Address" rows="3" required></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ecat">Select Category</label>
+                                                    <select size="3" class="form-control" id="ecat" multiple required>
+                                                    </select>
+                                                    <p>Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Account Number</label>
+                                                    <input id="eaccno" type="text" class="form-control" placeholder="Restaurant Account Number" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>IFS Code</label>
+                                                    <input id="eifsc" type="text" class="form-control" placeholder="Restaurant IFSC" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Bank Name</label>
+                                                    <input id="ebname" type="text" class="form-control" placeholder="Restaurant Bank Name" required>
+                                                </div><br>
+                                                <button id="esave" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Update Restaurant</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Restaurant Info</h5>
+                                            <button id="close" onclick="clear()" class="btn btn-danger" style="float: right; width: 10%" type="button"  data-toggle="tooltip"><b>X</b></button>
+                                            <span class="d-block m-t-5">Elaborate Details</span>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <img class="m-img" id="log" src="">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        <br>
+                                                        <h3 id="title"></h3>
+                                                        <h6 id="desc"></h6><span id="status"></span>
+                                                        <h5 id="phone"></h5>
+                                                        <h6 id="email"></h6>
+                                                        <h6 id="address"></h6>
+                                                        <h6 style="width: 30%; margin: 0%;" id="rating"></h6>
+                                                        <p style="color: gray;" id="total_rating"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="margin: 5% 10%;">
+                                                    <h5 id="accno"></h5>
+                                                    <h5 id="ifsc"></h5>
+                                                    <h6 id="bname"></h6>
+                                                    <h4 id="category"></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Add Restaurant</h5>
+                                            <span class="d-block m-t-5">Add <code>new restaurant</code> details here</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label>Restaurant Name</label>
+                                                    <input id="rname" type="text" class="form-control" placeholder="Name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Restaurant Logo</label>
+                                                    <input id="rlogo" type="file" class="form-control" placeholder="Restaurant Banner" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="rdesc">Description</label>
+                                                    <textarea id="rdesc" class="form-control" placeholder="A Brief Description" rows="3" required></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Phone Number</label>
+                                                    <input id="rphone" type="phone" class="form-control" placeholder="Restaurant Phone Number" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Email</label>
+                                                    <input id="remail" type="email" class="form-control" placeholder="Restaurant Mail ID" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="radr">Address</label>
+                                                    <textarea class="form-control" id="radr" placeholder="Restaurant Address" rows="3" required></textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="cat">Select Category</label>
+                                                    <select size="3" class="form-control" id="cat" multiple required>
+                                                    </select>
+                                                    <p>Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Account Number</label>
+                                                    <input id="raccno" type="text" class="form-control" placeholder="Restaurant Account Number" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>IFS Code</label>
+                                                    <input id="rifsc" type="text" class="form-control" placeholder="Restaurant IFSC" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Bank Name</label>
+                                                    <input id="rbname" type="text" class="form-control" placeholder="Restaurant Bank Name" required>
+                                                </div><br>
+                                                <button id="rsave" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Add Restaurant</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							<!-- [ Main Content ] end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- [ Main Content ] end -->
+
+	<!-- Required Js -->
+	<script src="assets/js/vendor-all.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/pcoded.min.js"></script>
+
+    <script>
+        const search = () => {
+            let filter = document.getElementById("myInput").value.toUpperCase();
+            let myTable = document.getElementById("user");
+            let tr = myTable.getElementsByTagName('tr');
+
+            for(var i=0;i<tr.length;i++){
+                let td = tr[i].getElementsByTagName('td')[2];
+                let td1 = tr[i].getElementsByTagName('td')[3];
+                if(td && td1){
+                    let textvalue = td.textContent || td.innerHTML;
+                    let textvalue1 = td1.textContent || td1.innerHTML;
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)==0){
+                        tr[i].style.display="";
+                    }
+                    else{
+                        tr[i].style.display="none";
+                    }
+                }
+            }
+        }
+        var names=[];
+        function addRowHandlers() {
+            var table = document.getElementById("user");
+            var rows = table.getElementsByTagName("tr");
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = table.rows[i];
+                var createClickHandler = function(row) {
+                return function() {
+                    var img =  row.getElementsByTagName("td")[1].getElementsByTagName("img")[0].getAttribute("src");
+                    var name =  row.getElementsByTagName("td")[2].textContent;
+                    var phone =  row.getElementsByTagName("td")[3].textContent;
+                    var email =  row.getElementsByTagName("td")[4].textContent;
+                    var address =  row.getElementsByTagName("td")[5].textContent;
+                    var description =  row.getElementsByTagName("td")[6].textContent;
+                    var rating =  row.getElementsByTagName("td")[7].textContent;
+                    var total_rating =  row.getElementsByTagName("td")[8].textContent;
+                    var accno =  row.getElementsByTagName("td")[10].textContent;
+                    var ifsc =  row.getElementsByTagName("td")[11].textContent;
+                    var bname =  row.getElementsByTagName("td")[12].textContent;
+                    var status =  row.getElementsByTagName("td")[13].textContent;
+                    var category =  row.getElementsByTagName("td")[14].textContent;
+
+                    document.getElementById("log").src = img;
+                    document.getElementById("title").innerHTML = name;
+                    document.getElementById("desc").innerHTML = description;
+                    document.getElementById("phone").innerHTML = "<hr>Phone: "+phone;
+                    document.getElementById("email").innerHTML = email;                  
+                    document.getElementById("address").innerHTML = address;
+                    document.getElementById("rating").innerHTML = rating+"  "+'<i class="fas fa-star text-c-yellow f-18"></i>';
+                    document.getElementById("total_rating").innerHTML = "("+total_rating+" Ratings)";
+                    document.getElementById("accno").innerHTML = "Account Number: "+accno;
+                    document.getElementById("ifsc").innerHTML = "IFSC: "+ifsc;
+                    document.getElementById("bname").innerHTML = bname;
+                    //document.getElementById("category").innerHTML = category;
+                    var str1="";
+                    let carr = category.split(",");
+
+                    function func(item, index) {
+                        for(let i=0;i<names.length;i++){
+                            var obj = names[i];
+                            if(obj.id==item)
+                            {
+                                str1=str1+obj.name+", ";
+                            }
+                        }
+                    }
+
+                    carr.forEach(func);
+                    document.getElementById("category").innerHTML = str1;
+                    if(status==="1")
+                    {
+                        document.getElementById("status").innerHTML = "Open";
+                        document.getElementById("status").className = "badge badge-pill badge-success";
+                    }
+                    else
+                    {
+                        document.getElementById("status").innerHTML = "Closed"
+                        document.getElementById("status").className = "badge badge-pill badge-danger";
+                    }    
+                    };
+                };
+                currentRow.onclick = createClickHandler(currentRow);
+                if(i>0){
+                    var edit = currentRow.getElementsByTagName("td")[9].getElementsByTagName("button")[0];
+                    var editHandler = function(row) {
+                        return function() {
+                            document.getElementById("ecard").style.display="";
+                            var img =  row.getElementsByTagName("td")[1].getElementsByTagName("img")[0].getAttribute("src");
+                            var name =  row.getElementsByTagName("td")[2].textContent;
+                            var phone =  row.getElementsByTagName("td")[3].textContent;
+                            var email =  row.getElementsByTagName("td")[4].textContent;
+                            var address =  row.getElementsByTagName("td")[5].textContent;
+                            var description =  row.getElementsByTagName("td")[6].textContent;
+                            var rating =  row.getElementsByTagName("td")[7].textContent;
+                            var total_rating =  row.getElementsByTagName("td")[8].textContent;
+                            var accno =  row.getElementsByTagName("td")[10].textContent;
+                            var ifsc =  row.getElementsByTagName("td")[11].textContent;
+                            var bname =  row.getElementsByTagName("td")[12].textContent;
+                            var status =  row.getElementsByTagName("td")[13].textContent;
+                            var category =  row.getElementsByTagName("td")[14].textContent;
+                            var id =  row.getElementsByTagName("td")[15].textContent;
+                            $(window).scrollTop(0);
+
+                            console.log(name,phone,email,desc,id);
+                            document.getElementById("eid").value=id;
+                            document.getElementById("eadr").value=address;
+                            document.getElementById("ename").value=name;
+                            document.getElementById("ephone").value=phone;
+                            document.getElementById("eemail").value=email;
+                            document.getElementById("edesc").value=description;
+                            document.getElementById("eaccno").value=accno;
+                            document.getElementById("eifsc").value=ifsc;
+                            document.getElementById("ebname").value=bname;
+
+                            cats = category.split(",");
+                            var scat="";
+                            $.ajax({
+                                type: 'GET',
+                                url: 'https://dtechblradmin.xyz/prodial/api/category.php',
+                                dataType: 'json',
+                                success: function(response){
+                                    console.log(response.success);
+                                    if(response.success){
+                                        $.each(response.data, function(index,item){
+                                            let rr = item['id'];
+                                            if(cats.includes(item['id'])){
+                                                scat=scat+ "<option selected value='"+item['id']+"''>"+item['name']+"</option>";
+                                            }
+                                            else{
+                                                scat=scat+ "<option value='"+item['id']+"''>"+item['name']+"</option>";
+                                            }
+                                            
+                                        })
+                                        document.getElementById("ecat").innerHTML = scat;
+                                    }
+                                    else{
+                                        console.log(response.message);
+                                    }
+                                }
+                            });
+                        };
+                    };
+                    edit.onclick = editHandler(currentRow);
+                    var del = currentRow.getElementsByTagName("td")[9].getElementsByTagName("button")[1];
+                    var deleteHandler = function(row) {
+                        return function() {
+                            var id =  row.getElementsByTagName("td")[15].textContent;
+                            var fd = new FormData();
+                            fd.append('delete',id);
+                            SlickLoader.enable();
+                            $.ajax({
+                                url: "https://dtechblradmin.xyz/prodial/api/restaurants.php",
+                                type: 'post',
+                                data: fd,
+                                contentType: false,
+                                processData: false,
+                                success: function(response){
+                                    //console.log(response);
+                                    window.location.reload();
+                                }
+                            });
+                        };
+                    };
+                    del.onclick = deleteHandler(currentRow);
+                }
+            }
+        }
+        $(document).ready(function(){
+            SlickLoader.enable();
+            document.getElementById("ecard").style.display="none";
+            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Phone</th><th>Email</th><th style='display:none;'>Address</th><th style='display:none;'>Description</th><th>Rating</th><th style='display:none;'>Total Rating</th><th>Action</th><th style='display:none;'>Account Number</th><th style='display:none;'>IFSC</th><th style='display:none;'>Bank Name</th><th style='display:none;'>Status</th><th style='display:none;'>Category</th><th style='display:none;'>ID</th></thead><tbody>";
+            $.ajax({
+                type: 'GET',
+                url: 'https://dtechblradmin.xyz/prodial/api/restaurants.php?restaurants=dtech',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.success);
+                    if(response.success){
+                        $.each(response.data, function(index,item){
+                            var il = item['image'];
+                            il = il.split(' ').join('%20');
+                            console.log(il);
+                            str=str+ "<tr><td>"+(index+1)+"</td><td><img loading='lazy' class='h-img' src="+il+"></td><td>"+item["name"]+"</td><td>"+item["phone"]+"</td><td>"+item["email"]+"</td><td style='display:none;'>"+item["address"]+"</td><td style='display:none;'>"+item["description"]+"</td><td>"+item["rating"]+"</td><td style='display:none;'>"+item["total_rating"]+"</td><td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item["accno"]+"</td><td style='display:none;'>"+item["ifsc"]+"</td><td style='display:none;'>"+item["bank_name"]+"</td><td style='display:none;'>"+item["status"]+"</td><td style='display:none;'>"+item["category"]+"</td><td style='display:none;'>"+item["id"]+"</td></tr>";
+                        })
+                        SlickLoader.disable();
+                        document.getElementById("user").innerHTML = str+"</tbody>";
+                    }
+                    else{
+                        console.log(response.message);
+                    }
+                    addRowHandlers();
+                }
+            });
+            document.getElementById("close").onclick= function() {
+                document.getElementById("log").src = "";
+                document.getElementById("title").innerHTML = "";
+                document.getElementById("desc").innerHTML = "";
+                document.getElementById("phone").innerHTML = "";
+                document.getElementById("email").innerHTML = "";                  
+                document.getElementById("address").innerHTML = "";
+                document.getElementById("rating").innerHTML = "";
+                document.getElementById("total_rating").innerHTML = "";
+                document.getElementById("accno").innerHTML = "";
+                document.getElementById("ifsc").innerHTML = "";
+                document.getElementById("bname").innerHTML = "";
+                document.getElementById("category").innerHTML = "";
+                document.getElementById("status").innerHTML = "";
+            };
+            var str2="";
+            $.ajax({
+                type: 'GET',
+                url: 'https://dtechblradmin.xyz/prodial/api/category.php',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.success);
+                    if(response.success){
+                        $.each(response.data, function(index,item){
+                            str2=str2+ "<option value='"+item['id']+"''>"+item['name']+"</option>";
+                            obj={id:item['id'],name:item['name']};
+                            names.push(obj);
+                        })
+                        document.getElementById("cat").innerHTML = str2;
+                    }
+                    else{
+                        console.log(response.message);
+                    }
+                }
+            });
+            document.getElementById("rsave").onclick= function() {
+                SlickLoader.enable();
+                var name = document.getElementById("rname").value;
+                var desc = document.getElementById("rdesc").value;
+                var phone = document.getElementById("rphone").value;
+                var email = document.getElementById("remail").value;
+                var address = document.getElementById("radr").value;
+                var selected = $("#cat :selected").map((_, e) => e.value).get();
+                var accno = document.getElementById("raccno").value;
+                var ifsc = document.getElementById("rifsc").value;
+                var bname = document.getElementById("rbname").value;
+
+                var file= $('#rlogo')[0].files[0];
+                var fd = new FormData();
+
+                fd.append('name',name);
+                fd.append('description',desc);
+                fd.append('file',file);
+                fd.append('phone',phone);
+                fd.append('email',email);
+                fd.append('address',address);
+                fd.append('category',selected);
+                fd.append('accno',accno);
+                fd.append('ifsc',ifsc);
+                fd.append('bname',bname);
+                
+                
+                $.ajax({
+                    url: "https://dtechblradmin.xyz/prodial/api/restaurants.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        console.log(response.success);
+                        window.location.reload();
+                    }
+                });
+            };
+            document.getElementById("closeupdate").onclick= function() {
+                document.getElementById("ecard").style.display="none";
+            }
+            document.getElementById("esave").onclick= function() {
+                SlickLoader.enable();
+                var id = document.getElementById("eid").value;
+                var name = document.getElementById("ename").value;
+                var desc = document.getElementById("edesc").value;
+                var phone = document.getElementById("ephone").value;
+                var email = document.getElementById("eemail").value;
+                var address = document.getElementById("eadr").value;
+                var selected = $("#ecat :selected").map((_, e) => e.value).get();
+                var accno = document.getElementById("eaccno").value;
+                var ifsc = document.getElementById("eifsc").value;
+                var bname = document.getElementById("ebname").value;
+
+                var file= $('#elogo')[0].files[0];
+                var fd = new FormData();
+
+                fd.append('id',id);
+                fd.append('name',name);
+                fd.append('description',desc);
+                fd.append('file',file);
+                fd.append('phone',phone);
+                fd.append('email',email);
+                fd.append('address',address);
+                fd.append('category',selected);
+                fd.append('accno',accno);
+                fd.append('ifsc',ifsc);
+                fd.append('bname',bname);
+                
+                
+                $.ajax({
+                    url: "https://dtechblradmin.xyz/prodial/api/restaurants.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        //console.log(response);
+                        window.location.reload();
+                    }
+                });
+            };
+        });
+    </script>
+</body>
+
+</html>

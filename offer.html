@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="Prodial Delivery" />
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+	<!-- animation css -->
+	<link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<title>Prodial - Food Delivery</title>
+    
+    <style>
+        body{
+            overflow-x: hidden;
+            overflow-y: visible;
+        }
+        .h-img{
+            height: 50px;
+        }
+        .m-img{
+            height: 65px;
+            border-radius: 10%;
+        }
+        .b-img{
+            width: 80%;
+            margin: 10%;
+            border-radius: 10%;
+        }
+        .btn{
+            width: 30%;
+            height: 30px;
+            font-size: small;
+            padding: 5px;
+        }
+        table{
+            overflow: scroll;
+        }
+
+    </style>
+    <script>
+		try {
+			  const cookieValue = document.cookie
+			  .split('; ')
+			  .find(row => row.startsWith('user='))
+			  .split('=')[1];
+				console.log(cookieValue);
+				if(cookieValue==""){
+					window.location.href = "login";
+				}
+			}
+			catch(err) {
+			  window.location.href = "login";
+			}
+	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.css">
+    <script src="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.js"></script>  
+</head>
+
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
+		<div class="navbar-wrapper ">
+			<div class="navbar-brand header-logo bg-c-yellow">
+				<a href="index" class="b-brand">
+					<img class="h-img" src="assets/images/logo.png" alt="" class="logo images">
+				</a>
+				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+			</div>
+			<div class="navbar-content scroll-div">
+				<ul class="nav pcoded-inner-navbar">
+					<li class="nav-item pcoded-menu-caption">
+						<label>Navigation</label>
+					</li>
+					<li class="nav-item">
+						<a href="index" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="user" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="restaurant" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="category" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="product" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+
+	<!-- [ Header ] start -->
+	<!-- [ Header ] end -->
+
+	<!-- [ Main Content ] start -->
+	<div class="pcoded-main-container">
+		<div class="pcoded-wrapper">
+			<div class="pcoded-content">
+				<div class="pcoded-inner-content">
+					<div class="main-body">
+						<div class="page-wrapper">
+							<!-- [ breadcrumb ] start -->
+							<div class="page-header">
+								<div class="page-block">
+									<div class="row align-items-center">
+										<div class="col-md-10">
+											<div class="page-header-title">
+												<h5>Offers</h5>
+											</div>
+											<ul class="breadcrumb">
+												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="#!">Available Offers</a></li>
+											</ul>
+										</div>
+                                        <div class="input-group col-md-2">
+                                            <input id="myInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                              aria-describedby="search-addon" onkeyup="search()"/>
+                                            <!-- <button type="button" class="btn-outline-primary">search</button> -->
+                                        </div>
+									</div>
+								</div>
+							</div>
+							<!-- [ breadcrumb ] end -->
+							<!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Offers</h5>
+                                            <span class="d-block m-t-5">Table containing <code>ongoing offer</code> details</span>
+                                        </div>
+                                        <div class="card-body table-border-style">
+                                            <div class="table-responsive">
+                                                <table id="user" class="table table-hover">
+                                                    
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Product Info</h5>
+                                            <button id="close" onclick="clear()" class="btn btn-danger" style="float: right; width: 10%" type="button"  data-toggle="tooltip"><b>X</b></button>
+                                            <span class="d-block m-t-5">Elaborate Details</span>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <img class="b-img" id="log" src="">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div>
+                                                        <br>
+                                                        <h3 id="title"></h3>
+                                                        <h6 id="desc"></h6><span id="status"></span>
+                                                        <h5 id="phone"></h5>
+                                                        <h6 id="email"></h6>
+                                                        <h6 id="address"></h6>
+                                                        <h6 style="width: 30%; margin: 0%;" id="rating"></h6>
+                                                        <p style="color: gray;" id="total_rating"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="margin: 5% 10%;">
+                                                    <h5 id="accno"></h5>
+                                                    <h5 id="ifsc"></h5>
+                                                    <h6 id="bname"></h6>
+                                                    <h4 id="category"></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							<!-- [ Main Content ] end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- [ Main Content ] end -->
+
+	<!-- Required Js -->
+	<script src="assets/js/vendor-all.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/pcoded.min.js"></script>
+
+    <script>
+        const search = () => {
+            let filter = document.getElementById("myInput").value.toUpperCase();
+            let myTable = document.getElementById("user");
+            let tr = myTable.getElementsByTagName('tr');
+            let fp = parseFloat(filter);
+            for(var i=0;i<tr.length;i++){
+                let td = tr[i].getElementsByTagName('td')[2];
+                let td1 = tr[i].getElementsByTagName('td')[4];
+                let td2 = tr[i].getElementsByTagName('td')[11];
+                if(td && td1 && td2){
+                    let textvalue = td.textContent || td.innerHTML;
+                    let textvalue1 = td1.textContent || td1.innerHTML;
+                    let textvalue2 = td2.textContent || td2.innerHTML;
+                    textvalue2 = parseFloat(textvalue2);
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)==0 || textvalue2>=fp){
+                        tr[i].style.display="";
+                    }
+                    else{
+                        tr[i].style.display="none";
+                    }
+                }
+            }
+        }
+        function addRowHandlers() {
+            var table = document.getElementById("user");
+            var rows = table.getElementsByTagName("tr");
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = table.rows[i];
+                var createClickHandler = function(row) {
+                return function() {
+                    var img =  row.getElementsByTagName("td")[1].getElementsByTagName("img")[0].getAttribute("src");
+                    var name =  row.getElementsByTagName("td")[2].textContent;
+                    var price =  row.getElementsByTagName("td")[3].textContent;
+                    var restaurant =  row.getElementsByTagName("td")[4].textContent;
+                    var stock =  row.getElementsByTagName("td")[5].textContent;
+                    var offer_price =  row.getElementsByTagName("td")[7].textContent;
+                    var rating =  row.getElementsByTagName("td")[8].textContent;
+                    var total_rating =  row.getElementsByTagName("td")[9].textContent;
+                    var category =  row.getElementsByTagName("td")[10].textContent;
+                    var description =  row.getElementsByTagName("td")[12].textContent;
+
+                    document.getElementById("log").src = img;
+                    document.getElementById("title").innerHTML = name;
+                    if(offer_price!=""){
+                        document.getElementById("email").innerHTML = "<strike>Rs. "+price+"</strike>";
+                        document.getElementById("phone").innerHTML = "Rs. "+offer_price;      
+                    }
+                    else{
+                        document.getElementById("phone").innerHTML = ""; 
+                        document.getElementById("email").innerHTML = "Rs. "+price;
+                    }            
+                    document.getElementById("address").innerHTML = "<hr>"+restaurant;
+                    document.getElementById("rating").innerHTML = rating+"  "+'<i class="fas fa-star text-c-yellow f-18"></i>';
+                    document.getElementById("total_rating").innerHTML = "("+total_rating+" Ratings)";
+                    document.getElementById("accno").innerHTML = "In Stock: "+stock;
+                    document.getElementById("ifsc").innerHTML = "Category: "+category;
+                    document.getElementById("desc").innerHTML = description;
+                    
+                    if(stock>0)
+                    {
+                        document.getElementById("status").innerHTML = "Available";
+                        document.getElementById("status").className = "badge badge-pill badge-success";
+                    }
+                    else
+                    {
+                        document.getElementById("status").innerHTML = "Out of Stock"
+                        document.getElementById("status").className = "badge badge-pill badge-danger";
+                    }    
+                    };
+                };
+              currentRow.onclick = createClickHandler(currentRow);
+            }
+        }
+        $(document).ready(function(){
+            SlickLoader.enable();
+            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Price</th><th style='display:none;'>Restaurant Name</th><th  style='display:none;'>Stock</th><th style='display:none;'>Action</th><th>Offer Price</th><th style='display:none;'>Rating</th><th style='display:none;'>Total Rating</th><th style='display:none;'>Category</th><th>Offer Percent</th><th style='display:none;'>Description</th></thead><tbody>";
+            $.ajax({
+                type: 'GET',
+                url: 'https://dtechblradmin.xyz/prodial/api/offers.php?offer=offer',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.success);
+                    if(response.success){
+                        $.each(response.data, function(index,item){
+                            var il = item['image'];
+                            il = il.split(' ').join('%20');
+                            var p = parseFloat(item["price"]);
+                            var op = parseFloat(item["offer_price"]);
+                            var percent = (p-op)*100/p;
+                            percent = Number(percent).toFixed(2);
+                            str=str+ "<tr><td>"+(index+1)+"</td><td><img loading='lazy' class='m-img' src="+il+"></td><td><h5>"+item["name"]+"</h5></td><td><h5>"+item["price"]+"</h5></td><td style='display:none;'><h5>"+item["restaurant_name"]+"</h5></td><td  style='display:none;'><h6>"+item["stock"]+"</h6></td><td style='display:none;'><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td><h5>"+item["offer_price"]+"</h5></td><td style='display:none;'><h6>"+item["rating"]+"</h6></td><td style='display:none;'><h6>"+item["total_rating"]+"</h6></td><td style='display:none;'><h6>"+item["category_name"]+"</h6></td><td><h3>"+percent+"</h3></td><td style='display:none;'><h6>"+item["description"]+"</h6></td></tr>";
+                        })
+                        SlickLoader.disable();
+                        document.getElementById("user").innerHTML = str+"</tbody>";
+                    }
+                    else{
+                        console.log(response.message);
+                    }
+                    addRowHandlers();
+                }
+            });
+            
+            document.getElementById("close").onclick= function() {
+                document.getElementById("log").src = "";
+                document.getElementById("title").innerHTML = "";
+                document.getElementById("desc").innerHTML = "";
+                document.getElementById("phone").innerHTML = "";
+                document.getElementById("email").innerHTML = "";                  
+                document.getElementById("address").innerHTML = "";
+                document.getElementById("rating").innerHTML = "";
+                document.getElementById("total_rating").innerHTML = "";
+                document.getElementById("accno").innerHTML = "";
+                document.getElementById("ifsc").innerHTML = "";
+                document.getElementById("bname").innerHTML = "";
+                document.getElementById("category").innerHTML = "";
+                document.getElementById("status").innerHTML = "";
+            };
+            
+        });
+    </script>
+</body>
+
+</html>

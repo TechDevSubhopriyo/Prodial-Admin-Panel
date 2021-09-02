@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="Prodial Delivery" />
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+	<!-- animation css -->
+	<link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<title>Prodial - Food Delivery</title>
+    
+    <style>
+        body{
+            overflow-x: hidden;
+            overflow-y: visible;
+        }
+        .h-img{
+            height: 50px;
+        }
+        .m-img{
+            height: 80px;
+            border-radius: 10%;
+        }
+        .btn{
+            width: 30%;
+            height: 30px;
+            font-size: small;
+            padding: 5px;
+        }
+        table{
+            overflow: scroll;
+        }
+
+    </style>
+    <script>
+		try {
+			  const cookieValue = document.cookie
+			  .split('; ')
+			  .find(row => row.startsWith('user='))
+			  .split('=')[1];
+				console.log(cookieValue);
+				if(cookieValue==""){
+					window.location.href = "login";
+				}
+			}
+			catch(err) {
+			  window.location.href = "login";
+			}
+	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.css">
+    <script src="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.js"></script>   
+</head>
+
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
+		<div class="navbar-wrapper ">
+			<div class="navbar-brand header-logo bg-c-yellow">
+				<a href="index" class="b-brand">
+					<img class="h-img" src="assets/images/logo.png" alt="" class="logo images">
+				</a>
+				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+			</div>
+			<div class="navbar-content scroll-div">
+				<ul class="nav pcoded-inner-navbar">
+					<li class="nav-item pcoded-menu-caption">
+						<label>Navigation</label>
+					</li>
+					<li class="nav-item">
+						<a href="index" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="user" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="restaurant" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="category" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="product" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+
+	<!-- [ Header ] start -->
+	<!-- [ Header ] end -->
+
+	<!-- [ Main Content ] start -->
+	<div class="pcoded-main-container">
+		<div class="pcoded-wrapper">
+			<div class="pcoded-content">
+				<div class="pcoded-inner-content">
+					<div class="main-body">
+						<div class="page-wrapper">
+							<!-- [ breadcrumb ] start -->
+							<div class="page-header">
+								<div class="page-block">
+									<div class="row align-items-center">
+										<div class="col-md-10">
+											<div class="page-header-title">
+												<h5>Categories</h5>
+											</div>
+											<ul class="breadcrumb">
+												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="#!">Available Categories</a></li>
+											</ul>
+										</div>
+                                        <div class="input-group col-md-2">
+                                            <input id="myInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                              aria-describedby="search-addon" onkeyup="search()"/>
+                                            <!-- <button type="button" class="btn-outline-primary">search</button> -->
+                                        </div>
+									</div>
+								</div>
+							</div>
+							<!-- [ breadcrumb ] end -->
+							<!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Categories</h5>
+                                            <span class="d-block m-t-5">Table containing <code>categories</code> details</span>
+                                        </div>
+                                        <div class="card-body table-border-style">
+                                            <div class="table-responsive">
+                                                <table id="user" class="table table-hover">
+                                                    
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card" id="ecard">
+                                        <div class="card-header">
+                                            <h5>Edit Category</h5>
+                                            <button id="close" onclick="clear()" class="btn btn-danger" style="float: right; width: 10%" type="button"  data-toggle="tooltip"><b>X</b></button>
+                                            <span class="d-block m-t-5">Edit <code>selected</code> category</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <input id="rid" type="hidden" class="form-control" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Category Name</label>
+                                                    <input id="rname" type="text" class="form-control" placeholder="Name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Category Image</label>
+                                                    <input id="rlogo" type="file" class="form-control" placeholder="Restaurant Banner">
+                                                </div>
+                                                <br>
+                                                <button id="rupdate" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Save Category</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Add Category</h5>
+                                            <span class="d-block m-t-5">Add <code>new category</code> details here</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label>Category Name</label>
+                                                    <input id="rname1" type="text" class="form-control" placeholder="Name" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Category Image</label>
+                                                    <input id="rlogo1" type="file" class="form-control" placeholder="Restaurant Banner" required>
+                                                </div>
+                                                <br>
+                                                <button id="rsave" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Add Category</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+							<!-- [ Main Content ] end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- [ Main Content ] end -->
+
+	<!-- Required Js -->
+	<script src="assets/js/vendor-all.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/pcoded.min.js"></script>
+
+    <script>
+        const search = () => {
+            let filter = document.getElementById("myInput").value.toUpperCase();
+            let myTable = document.getElementById("user");
+            let tr = myTable.getElementsByTagName('tr');
+
+            for(var i=0;i<tr.length;i++){
+                let td = tr[i].getElementsByTagName('td')[2];
+                if(td){
+                    let textvalue = td.textContent || td.innerHTML;
+                    if(textvalue.toUpperCase().indexOf(filter)>-1){
+                        tr[i].style.display="";
+                    }
+                    else{
+                        tr[i].style.display="none";
+                    }
+                }
+            }
+        }
+        
+        function addRowHandlers() {
+            var table = document.getElementById("user");
+            var rows = table.getElementsByTagName("tr");
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = table.rows[i];
+                
+                if(i>0){
+                    var edit = currentRow.getElementsByTagName("td")[3].getElementsByTagName("button")[0];
+                    var editHandler = function(row) {
+                        return function() {
+                            var name =  row.getElementsByTagName("td")[2].textContent;
+                            var id =  row.getElementsByTagName("td")[4].textContent;
+                            document.getElementById("ecard").style.display="";
+                            document.getElementById("rname").value = name;
+                            document.getElementById("rid").value = id;
+                        };
+                    };
+                    edit.onclick = editHandler(currentRow);
+                    var del = currentRow.getElementsByTagName("td")[3].getElementsByTagName("button")[1];
+                    var deleteHandler = function(row) {
+                        return function() {
+                            var id =  row.getElementsByTagName("td")[4].textContent;
+                            var name =  row.getElementsByTagName("td")[2].textContent;
+                            var fd = new FormData();
+                            fd.append('delete',id);
+                            
+                            $.ajax({
+                                url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                                type: 'post',
+                                data: fd,
+                                contentType: false,
+                                processData: false,
+                                success: function(response){
+                                    console.log(response.success);
+                                    window.location.reload();
+                                }
+                            });
+                        };
+                    };
+                    del.onclick = deleteHandler(currentRow);
+                }
+            }
+        }
+        $(document).ready(function(){
+            SlickLoader.enable();
+            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Action</th><th style='display:none;'>ID</th></thead><tbody>";
+            $.ajax({
+                type: 'GET',
+                url: 'https://dtechblradmin.xyz/prodial/api/category.php',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.success);
+                    if(response.success){
+                        $.each(response.data, function(index,item){
+                            var il = item['image'];
+                            il = il.split(' ').join('%20');
+                            str=str+ "<tr><td><h4>"+(index+1)+"</h4></td><td><img loading='lazy' class='m-img' src="+il+"></td><td><h3>"+item["name"]+"</h3></td><td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td></tr>";
+                        })
+                        SlickLoader.disable();
+                        document.getElementById("user").innerHTML = str+"</tbody>";
+                    }
+                    else{
+                        console.log(response.message);
+                    }
+                    addRowHandlers();
+                }
+            });
+            document.getElementById("close").onclick= function() {
+                document.getElementById("ecard").style.display = "none";
+            };
+            document.getElementById("rsave").onclick= function() {
+                SlickLoader.enable();
+                var name = document.getElementById("rname1").value;
+
+                var file= $('#rlogo1')[0].files[0];
+                var fd = new FormData();
+
+                fd.append('name',name);
+                fd.append('file',file);
+                
+                
+                $.ajax({
+                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        console.log(response.success);
+                        window.location.reload();
+                    }
+                });
+            };
+
+            document.getElementById("rupdate").onclick= function() {
+                SlickLoader.enable();
+                var name = document.getElementById("rname").value;
+                var id = document.getElementById("rid").value;
+
+                var file= $('#rlogo')[0].files[0];
+                var fd = new FormData();
+
+                fd.append('name',name);
+                fd.append('id',id);
+                fd.append('file',file);
+                
+                
+                $.ajax({
+                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        console.log(response.success);
+                        window.location.reload();
+                    }
+                });
+            };
+
+            document.getElementById("ecard").style.display="none";   
+            
+        });
+    </script>
+</body>
+
+</html>

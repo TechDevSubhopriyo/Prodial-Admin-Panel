@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="Prodial Delivery" />
+	<meta name="keywords"
+		content="admin templates, bootstrap admin templates, bootstrap 4, dashboard, dashboard templets, sass admin templets, html admin templates, responsive, bootstrap admin templates free download,premium bootstrap admin templates, Flash Able, Flash Able bootstrap admin template">
+	<meta name="author" content="Codedthemes" />
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon">
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" href="../assets/fonts/fontawesome/css/fontawesome-all.min.css">
+	<!-- animation css -->
+	<link rel="stylesheet" href="../assets/plugins/animation/css/animate.min.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="../assets/css/style.css">
+	<title>Prodial - Food Delivery</title>
+    <style>
+        .h-img{
+            height: 50px;
+            border-radius: 50%;
+        }
+        .btn{
+            width: 40%;
+            height: 30px;
+            font-size: small;
+            padding: 5px;
+        }
+        h3{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
+		<div class="navbar-wrapper ">
+			<div class="navbar-brand header-logo bg-c-yellow">
+				<a href="index.html" class="b-brand">
+					<img class="h-img" src="../assets/images/logo.png" alt="" class="logo images" style="border-radius: 0%;">
+				</a>
+				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+			</div>
+			<div class="navbar-content scroll-div">
+				<ul class="nav pcoded-inner-navbar">
+					<li class="nav-item pcoded-menu-caption">
+						<label>Navigation</label>
+					</li>
+					<li class="nav-item">
+						<a href="index.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="user.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="restaurant.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="category.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+					</li>
+				</ul>
+			
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+
+	<!-- [ Header ] start -->
+	<!-- [ Header ] end -->
+
+	<!-- [ Main Content ] start -->
+	<div class="pcoded-main-container">
+		<div class="pcoded-wrapper">
+			<div class="pcoded-content">
+				<div class="pcoded-inner-content">
+					<div class="main-body">
+						<div class="page-wrapper">
+							<!-- [ breadcrumb ] start -->
+							<div class="page-header">
+								<div class="page-block">
+									<div class="row align-items-center">
+										<div class="col-md-10">
+											<div class="page-header-title">
+												<h5>Users</h5>
+											</div>
+											<ul class="breadcrumb">
+												<li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="#!">User Details</a></li>
+											</ul>
+										</div>
+                                        <div class="input-group col-md-2">
+                                            <input id="myInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+                                              aria-describedby="search-addon" onkeyup="search()"/>
+                                            <!-- <button type="button" class="btn-outline-primary">search</button> -->
+                                        </div>
+									</div>
+								</div>
+							</div>
+							<!-- [ breadcrumb ] end -->
+							<!-- [ Main Content ] start -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Users Table</h5>
+                                            <span class="d-block m-t-5">Table containing <code>user</code> details</span>
+                                        </div>
+                                        <div class="card-body table-border-style">
+                                            <div class="table-responsive">
+                                                <table id="user" class="table table-hover">
+                                                    
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Profile</h5>
+                                            <span class="d-block m-t-5">View <code>User</code> Profile</span>
+                                        </div>
+                                        <div class="card-body table-border-style">
+                                            <div class="row">
+                                                <img class="col-md-6" src="../assets/images/logo.png">
+                                                <div class="col-md-6">
+                                                    <h3>Mark Zuck</h3><br>
+                                                    <h3>8013576138</h3> 
+                                                    <button style="width: 60%; margin: 10% 20%;" type="button" class="btn btn-outline-info" title="Send Mail" data-toggle="tooltip">Send Mail</button>
+                                                    <button style="width: 60%; margin: 0 20%;" type="button" class="btn btn-outline-warning" title="Send Notification" data-toggle="tooltip">Notify</button>                
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+							<!-- [ Main Content ] end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- [ Main Content ] end -->
+
+	<!-- Required Js -->
+	<script src="../assets/js/vendor-all.min.js"></script>
+	<script src="../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../assets/js/pcoded.min.js"></script>
+
+    <script>
+        const search = () => {
+            let filter = document.getElementById("myInput").value.toUpperCase();
+            let myTable = document.getElementById("user");
+            let tr = myTable.getElementsByTagName('tr');
+
+            for(var i=0;i<tr.length;i++){
+                let td = tr[i].getElementsByTagName('td')[2];
+                let td1 = tr[i].getElementsByTagName('td')[3];
+                if(td && td1){
+                    let textvalue = td.textContent || td.innerHTML;
+                    let textvalue1 = td1.textContent || td1.innerHTML;
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)==0){
+                        tr[i].style.display="";
+                    }
+                    else{
+                        tr[i].style.display="none";
+                    }
+                }
+            }
+        }
+        $(document).ready(function () {
+            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Action</th></tr></thead><tbody>";
+                $.ajax({
+                    type: 'GET',
+                    url: 'https://dtechblradmin.xyz/prodial/api/user.php?user=user',
+                    dataType: 'json',
+                    success: function(response){
+                        console.log(response.success);
+                        if(response.success){
+                            $.each(response.data, function(index,item){
+                                var src="";
+                                if(item['image'].indexOf('data:image/')==-1)
+                                    src = "data:image/jpeg;base64,";
+                                else
+                                    src="";    
+                                src += item['image'];
+                                str=str+ "<tr><td>"+(index+1)+"</td><td><img class='h-img' src='"+src+"'></td><td>"+item["name"]+"</td><td>"+item["phone"]+"</td><td>"+item["email"]+"</td><td>"+item["address"]+"</td><td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td></tr>";
+                            })
+                            document.getElementById("user").innerHTML = str+"</tbody>";
+                        }
+                        else{
+                            console.log(response.message);
+                        }
+                    }
+                });
+        });
+    </script>
+</body>
+
+</html>

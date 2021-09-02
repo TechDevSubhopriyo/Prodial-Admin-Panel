@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="Prodial Delivery" />
+	
+	<!-- Favicon icon -->
+	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+	<!-- animation css -->
+	<link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/style.css">
+	<title>Prodial - Food Delivery</title>
+	<style>
+        .h-img{
+            height: 50px;
+        }
+		.c-img{
+            height: 100px;
+			border-radius: 10%;
+        }
+    </style>
+	<script>
+		try {
+			  const cookieValue = document.cookie
+			  .split('; ')
+			  .find(row => row.startsWith('user='))
+			  .split('=')[1];
+				console.log(cookieValue);
+				if(cookieValue==""){
+					window.location.href = "login";
+				}
+			}
+			catch(err) {
+			  window.location.href = "login";
+			}
+	</script>
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.css">
+    <script src="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.js"></script>  
+</head>
+
+<body class="">
+	<!-- [ Pre-loader ] start -->
+	<div class="loader-bg">
+		<div class="loader-track">
+			<div class="loader-fill"></div>
+		</div>
+	</div>
+	<!-- [ Pre-loader ] End -->
+
+	<!-- [ navigation menu ] start -->
+	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
+		<div class="navbar-wrapper ">
+			<div class="navbar-brand header-logo bg-c-yellow">
+				<a href="index" class="b-brand">
+					<img class="h-img" src="assets/images/logo.png" alt="" class="logo images">
+				</a>
+				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+			</div>
+			<div class="navbar-content scroll-div">
+				<ul class="nav pcoded-inner-navbar">
+					<li class="nav-item pcoded-menu-caption">
+						<label>Navigation</label>
+					</li>
+					<li class="nav-item">
+						<a href="index" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="user" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="restaurant" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+					</li>
+                    <li class="nav-item">
+						<a href="category" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="product" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
+					</li>
+					<li class="nav-item">
+						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- [ navigation menu ] end -->
+
+	<!-- [ Header ] start -->
+	
+	<!-- [ Header ] end -->
+
+	<!-- [ Main Content ] start -->
+	<div class="pcoded-main-container">
+		<div class="pcoded-wrapper">
+			<div class="pcoded-content">
+				<div class="pcoded-inner-content">
+					<div class="main-body">
+						<div class="page-wrapper">
+							<!-- [ breadcrumb ] start -->
+							<div class="page-header">
+								<div class="page-block">
+									<div class="row align-items-center">
+										<div class="col-md-12">
+											<div class="page-header-title">
+												<h5>Home</h5>
+											</div>
+											<ul class="breadcrumb">
+												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="#!">Analytics Dashboard</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- [ breadcrumb ] end -->
+							<!-- [ Main Content ] start -->
+							<div class="row">
+
+								<!-- product profit start -->
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-red">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Users</h6>
+													<h3 class="m-b-0 text-white">150</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-user text-c-red f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-blue">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Categories</h6>
+													<h3 class="m-b-0 text-white">28</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-database text-c-blue f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-green">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Products</h6>
+													<h3 class="m-b-0 text-white">250</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-dollar-sign text-c-green f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-yellow">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Orders</h6>
+													<h3 class="m-b-0 text-white">6,784</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-shopping-basket text-c-yellow f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-green">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Coupons</h6>
+													<h3 class="m-b-0 text-white">5</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-tags text-c-green f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-red">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Restaurants</h6>
+													<h3 class="m-b-0 text-white">48</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-home text-c-red f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-yellow">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Riders</h6>
+													<h3 class="m-b-0 text-white">15</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-motorcycle text-c-yellow f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-blue">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Earnings</h6>
+													<h3 class="m-b-0 text-white">Rs. 5890</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-dollar-sign text-c-blue f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+								<div class="col-xl-3 col-md-6"><a href="user">
+									<div class="card prod-p-card bg-c-blue">
+										<div class="card-body">
+											<div class="row align-items-center m-b-25">
+												<div class="col">
+													<h6 class="m-b-5 text-white">Reviews</h6>
+													<h3 class="m-b-0 text-white">18</h3>
+												</div>
+												<div class="col-auto">
+													<i class="fas fa-star text-c-blue f-18"></i>
+												</div>
+											</div>
+											<p class="m-b-0 text-white">Updated Recently</p>
+										</div>
+									</div></a>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6 col-xl-4">
+									<div class="card user-card">
+										<div class="card-header">
+											<h5>Carousal Images</h5>
+										</div>
+										<div class="card-body table-border-style">
+                                            <div class="table-responsive">
+                                                <table id="user" class="table table-hover">
+                                                    
+                                                </table>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xl-3">
+									<div class="card user-card">
+										<div class="card-header">
+											<h5>Carousal Images</h5>
+										</div>
+										<div class="card-body table-border-style">
+                                            <div class="table-responsive" style="overflow-x: hidden;">
+                                                <form>
+													<div class="form-group">
+														<label>Carousal Image</label>
+														<input id="rlogo" type="file" class="form-control" placeholder="Restaurant Banner" required>
+													</div>
+													<br>
+													<button id="rsave" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Add Carousal Image</button>
+												</form>
+                                            </div>
+                                        </div>
+									</div>
+									<div class="card user-card">
+										<div class="card-header">
+											<span><h5>Delivery Charge </h5><h3 style="float: right;" id="ch"></h3></span>
+										</div>
+										<div class="card-body table-border-style">
+                                            <div class="table-responsive" style="overflow-x: hidden;">
+                                                <form>
+													<div class="form-group">
+														<label>Update Delivery Charge</label>
+														<input id="charge" type="number" class="form-control" placeholder="Delivery Charge" required>
+													</div>
+													<br>
+													<button id="savec" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Update</button>
+												</form>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xl-4">
+									<div class="card user-card">
+										<div class="card-header">
+											<h5>Profile</h5>
+										</div>
+										<div class="card-body  text-center">
+											<div class="usre-image">
+												<img src="assets/images/widget/img-round1.jpg" class="img-radius wid-100 m-auto" alt="User-Profile-Image">
+											</div>
+											<h6 class="f-w-600 m-t-25 fixed-button .btnm-b-10">Alessa Robert</h6>
+											<p>Active | Male | Born 23.05.1992</p>
+											<hr>
+											<p class="m-t-15">Activity Level: 87%</p>
+											<div class="bg-c-blue counter-block m-t-10 p-20">
+												<div class="row">
+													<div class="col-4">
+														<i class="fas fa-calendar-check text-white f-20"></i>
+														<h6 class="text-white mt-2 mb-0">1256</h6>
+													</div>
+													<div class="col-4">
+														<i class="fas fa-user text-white f-20"></i>
+														<h6 class="text-white mt-2 mb-0">8562</h6>
+													</div>
+													<div class="col-4">
+														<i class="fas fa-folder-open text-white f-20"></i>
+														<h6 class="text-white mt-2 mb-0">189</h6>
+													</div>
+												</div>
+											</div>
+											<p class="m-t-15">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+											<hr>
+											<div class="row justify-content-center user-social-link">
+												<div class="col-auto"><a href="#!"><i class="fab fa-facebook-f text-primary f-22"></i></a></div>
+												<div class="col-auto"><a href="#!"><i class="fab fa-twitter text-c-info f-22"></i></a></div>
+												<div class="col-auto"><a href="#!"><i class="fab fa-dribbble text-c-red f-22"></i></a></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- [ Main Content ] end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- [ Main Content ] end -->
+
+	<!-- Required Js -->
+	<script src="assets/js/vendor-all.min.js"></script>
+	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/js/pcoded.min.js"></script>
+
+	<script>
+		function addRowHandlers() {
+            var table = document.getElementById("user");
+            var rows = table.getElementsByTagName("tr");
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = table.rows[i];
+                
+                if(i>0){
+                    var del = currentRow.getElementsByTagName("td")[2].getElementsByTagName("button")[0];
+                    var deleteHandler = function(row) {
+                        return function() {
+                            var id =  row.getElementsByTagName("td")[3].textContent;
+                            var fd = new FormData();
+                            fd.append('delete',id);
+                            
+                            $.ajax({
+                                url: "https://dtechblradmin.xyz/prodial/api/carousal.php",
+                                type: 'post',
+                                data: fd,
+                                contentType: false,
+                                processData: false,
+                                success: function(response){
+                                    console.log(response);
+                                    window.location.reload();
+                                }
+                            });
+                        };
+                    };
+                    del.onclick = deleteHandler(currentRow);
+                }
+            }
+        }
+
+		$(document).ready(function () {
+            SlickLoader.enable();
+            var str="<thead><tr><th>#</th><th>Image</th><th>Action</th><th style='display:none;'>ID</th></tr></thead><tbody>";
+			$.ajax({
+				type: 'GET',
+				url: 'https://dtechblradmin.xyz/prodial/api/carousal.php',
+				dataType: 'json',
+				success: function(response){
+					console.log(response.success);
+					if(response.success){
+						$.each(response.carousel, function(index,item){
+							var link=item['image'];
+							str=str+ "<tr><td><h5>"+(index+1)+"</h5></td><td><img loading='lazy' class='c-img' src='"+link+"'></td><td><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td></tr>";
+						})
+						SlickLoader.disable();
+						document.getElementById("user").innerHTML = str+"</tbody>";
+					}
+					else{
+						console.log(response.message);
+					}
+					addRowHandlers();
+				}
+			});
+
+			$.ajax({
+				type: 'GET',
+				url: 'https://dtechblradmin.xyz/prodial/api/delivery_charge.php',
+				dataType: 'json',
+				success: function(response){
+					console.log(response.success);
+					if(response.success){
+						document.getElementById("ch").innerHTML = " ₹ "+response.charge;
+					}
+				}
+			});
+
+			document.getElementById("rsave").onclick= function() {
+                SlickLoader.enable();
+                var file= $('#rlogo')[0].files[0];
+                var fd = new FormData();
+                fd.append('file',file);
+                
+                $.ajax({
+                    url: "https://dtechblradmin.xyz/prodial/api/carousal.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        window.location.reload();
+                    }
+                });
+            };
+			document.getElementById("savec").onclick= function() {
+                SlickLoader.enable();
+                var c = document.getElementById("charge").value;
+				if(c==""){
+					alert("Please Enter some value");
+					SlickLoader.disable();
+					return;
+				}
+                var fd = new FormData();
+                fd.append('dc',c);
+                
+                $.ajax({
+                    url: "https://dtechblradmin.xyz/prodial/api/delivery_charge.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        window.location.reload();
+                    }
+                });
+            };
+        });
+	</script>
+</body>
+
+</html>

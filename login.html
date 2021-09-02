@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+	<!-- Favicon icon -->
+	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+	<!-- fontawesome icon -->
+	<link rel="stylesheet" href="assets/fonts/fontawesome/css/fontawesome-all.min.css">
+	<!-- animation css -->
+	<link rel="stylesheet" href="assets/plugins/animation/css/animate.min.css">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="assets/css/style.css">
+    <title>Prodial - Login</title>
+
+
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.css">
+    <script src="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.js"></script>  
+</head>
+
+<!-- [ auth-signin ] start -->
+<div class="auth-wrapper">
+	<div class="auth-content container">
+		<div class="card">
+			<div class="row align-items-center">
+				<div class="col-md-6">
+					<div class="card-body">
+						<img src="assets/images/logo.png" alt="" class="img-fluid mb-4">
+						<h4 class="mb-3 f-w-400">Login into your account</h4>
+						<div class="input-group mb-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="feather icon-user"></i></span>
+							</div>
+							<input id="username" type="email" class="form-control" placeholder="Username">
+						</div>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="feather icon-lock"></i></span>
+							</div>
+							<input id="password" type="password" class="form-control" placeholder="Password">
+						</div>
+						
+						<div class="form-group text-left mt-2">
+							
+						</div>
+						<button id="log" class="btn btn-primary mb-4 bg-c-yellow">Login</button>
+					</div>
+				</div>
+				<div class="col-md-6 d-none d-md-block">
+					<img src="assets/images/login-img.jpeg" alt="" class="img-fluid">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- [ auth-signin ] end -->
+
+<!-- Required Js -->
+<script src="assets/js/vendor-all.min.js"></script>
+<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+		document.getElementById("log").onclick=function(){
+
+			var user=document.getElementById("username").value; 
+			var pass=document.getElementById("password").value; 
+			console.log(user,pass);
+			SlickLoader.enable();
+			var link='https://dtechblradmin.xyz/prodial/api/login.php?user='+user+'&pass='+pass;
+			console.log(link);
+				$.ajax({
+				type: 'GET',
+				url: link,
+				dataType: 'json',
+				success: function(response){
+					console.log(response.success);
+					SlickLoader.disable();
+					if(response.success){
+						$.each(response.data, function(index,item){
+							console.log(item['name']);
+							
+							document.cookie = "user="+user+"; SameSite=None; Secure";
+							console.log(document.cookie);
+							
+							window.location.href = "index";
+						})
+					
+					}
+					else{
+						alert(response.message);
+					}
+				}
+			});
+		
+		};
+    });
+</script>
+
+</body>
+
+</html>

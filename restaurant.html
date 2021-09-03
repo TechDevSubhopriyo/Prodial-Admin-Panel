@@ -93,6 +93,9 @@
 						<a href="user" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
 					</li>
                     <li class="nav-item">
+						<a href="orders" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Orders</span></a>
+					</li>
+                    <li class="nav-item">
 						<a href="restaurant" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
 					</li>
                     <li class="nav-item">
@@ -330,10 +333,12 @@
             for(var i=0;i<tr.length;i++){
                 let td = tr[i].getElementsByTagName('td')[2];
                 let td1 = tr[i].getElementsByTagName('td')[3];
-                if(td && td1){
+                let td2 = tr[i].getElementsByTagName('td')[13];
+                if(td && td1&& td2){
                     let textvalue = td.textContent || td.innerHTML;
                     let textvalue1 = td1.textContent || td1.innerHTML;
-                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)==0){
+                    let textvalue2 = td2.textContent || td2.innerHTML;
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)==0 || textvalue2.toUpperCase().indexOf(filter)==0){
                         tr[i].style.display="";
                     }
                     else{
@@ -492,7 +497,7 @@
         $(document).ready(function(){
             SlickLoader.enable();
             document.getElementById("ecard").style.display="none";
-            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Phone</th><th>Email</th><th style='display:none;'>Address</th><th style='display:none;'>Description</th><th>Rating</th><th style='display:none;'>Total Rating</th><th>Action</th><th style='display:none;'>Account Number</th><th style='display:none;'>IFSC</th><th style='display:none;'>Bank Name</th><th style='display:none;'>Status</th><th style='display:none;'>Category</th><th style='display:none;'>ID</th></thead><tbody>";
+            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Phone</th><th style='display:none;'>Email</th><th style='display:none;'>Address</th><th style='display:none;'>Description</th><th>Rating</th><th style='display:none;'>Total Rating</th><th>Action</th><th style='display:none;'>Account Number</th><th style='display:none;'>IFSC</th><th style='display:none;'>Bank Name</th><th>Status</th><th style='display:none;'>Category</th><th style='display:none;'>ID</th></thead><tbody>";
             $.ajax({
                 type: 'GET',
                 url: 'https://dtechblradmin.xyz/prodial/api/restaurants.php?restaurants=dtech',
@@ -504,7 +509,20 @@
                             var il = item['image'];
                             il = il.split(' ').join('%20');
                             console.log(il);
-                            str=str+ "<tr><td>"+(index+1)+"</td><td><img loading='lazy' class='h-img' src="+il+"></td><td>"+item["name"]+"</td><td>"+item["phone"]+"</td><td>"+item["email"]+"</td><td style='display:none;'>"+item["address"]+"</td><td style='display:none;'>"+item["description"]+"</td><td>"+item["rating"]+"</td><td style='display:none;'>"+item["total_rating"]+"</td><td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item["accno"]+"</td><td style='display:none;'>"+item["ifsc"]+"</td><td style='display:none;'>"+item["bank_name"]+"</td><td style='display:none;'>"+item["status"]+"</td><td style='display:none;'>"+item["category"]+"</td><td style='display:none;'>"+item["id"]+"</td></tr>";
+                            str=str+ "<tr><td>"+(index+1)+"</td><td><img loading='lazy' class='h-img' src="+il+"></td><td>"+item["name"]+"</td><td>"+item["phone"]+"</td><td style='display:none;'>"+item["email"]+"</td><td style='display:none;'>"+item["address"]+"</td><td style='display:none;'>"+item["description"]+"</td><td>"+item["rating"]+"</td><td style='display:none;'>"+item["total_rating"]+"</td><td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item["accno"]+"</td><td style='display:none;'>"+item["ifsc"]+"</td><td style='display:none;'>"+item["bank_name"]+"</td>";
+                            
+                            var sta=item["status"];
+                            if(sta==="1")
+                            {
+                                str=str+"<td><span class='badge badge-pill badge-success'>Open</span>";
+                            }
+                            else
+                            {
+                                str=str+"<td><span class='badge badge-pill badge-danger'>Closed</span>";
+                            }
+                                
+                            str=str+"</td><td style='display:none;'>"+item["category"]+"</td><td style='display:none;'>"+item["id"]+"</td></tr>";
+                            console.log(str);
                         })
                         SlickLoader.disable();
                         document.getElementById("user").innerHTML = str+"</tbody>";

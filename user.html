@@ -93,6 +93,9 @@
 						<a href="product" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
 					</li>
                     <li class="nav-item">
+						<a href="coupon" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Coupons</span></a>
+					</li>
+                    <li class="nav-item">
 						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
 					</li>
                     <li class="nav-item">
@@ -211,7 +214,7 @@
         }
         $(document).ready(function () {
             SlickLoader.enable();
-            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Action</th></tr></thead><tbody>";
+            var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Referal Code</th><th>Referred By</th><th>Action</th></tr></thead><tbody>";
                 $.ajax({
                     type: 'GET',
                     url: 'https://dtechblradmin.xyz/prodial/api/user.php?user=user',
@@ -226,7 +229,12 @@
                                 else
                                     src="";    
                                 src += item['image'];
-                                str=str+ "<tr><td>"+(index+1)+"</td><td><img loading='lazy' class='h-img' src='"+src+"'></td><td>"+item["name"]+"</td><td>"+item["phone"]+"</td><td>"+item["email"]+"</td><td><p>"+item["address"]+"</p></td><td><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td></tr>";
+                                var address = item.address;
+                                if(address.length>40){
+                                    var po = address.indexOf(" ",40);
+                                    address= address.substring(0,po)+"<br>"+address.substring(po);
+                                }
+                                str=str+ "<tr><td>"+(index+1)+"</td><td><img loading='lazy' class='h-img' src='"+src+"'></td><td>"+item["name"]+"</td><td>"+item["phone"]+"</td><td>"+item["email"]+"</td><td><p>"+address+"</p></td><td>"+item["refid"]+"</td><td>"+item.refby+"</td><td><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td></tr>";
                             })
                             SlickLoader.disable();
                             document.getElementById("user").innerHTML = str+"</tbody>";

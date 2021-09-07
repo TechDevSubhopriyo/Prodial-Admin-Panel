@@ -37,8 +37,8 @@
         }
         table{
             overflow: scroll;
-            table-layout: auto;
         }
+
     </style>
     <script>
 		try {
@@ -132,11 +132,11 @@
 									<div class="row align-items-center">
 										<div class="col-md-10">
 											<div class="page-header-title">
-												<h5>Orders</h5>
+												<h5>Coupons</h5>
 											</div>
 											<ul class="breadcrumb">
 												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
-												<li class="breadcrumb-item"><a href="#!">Order Details</a></li>
+												<li class="breadcrumb-item"><a href="#!">Available Coupons</a></li>
 											</ul>
 										</div>
                                         <div class="input-group col-md-2">
@@ -150,11 +150,11 @@
 							<!-- [ breadcrumb ] end -->
 							<!-- [ Main Content ] start -->
                             <div class="row">
-                                <div class="col-md-10">
+                                <div class="col-md-8">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Orders</h5>
-                                            <span class="d-block m-t-5">Table containing <code>order</code> details</span>
+                                            <h5>Coupons</h5>
+                                            <span class="d-block m-t-5">Table containing <code>coupon</code> details</span>
                                         </div>
                                         <div class="card-body table-border-style">
                                             <div class="table-responsive">
@@ -165,14 +165,52 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Assign Order</h5>
-                                            <span class="d-block m-t-5">Assign <code>order</code> to available <code>rider</code></span>
+                                            <h5>Assign Coupon</h5>
+                                            <div class="input-group" style="float: right; width: 40%;">
+                                                <input id="myInput2" type="search" class="form-control rounded" placeholder="Search Name, Phone" aria-label="Search"
+                                                  aria-describedby="search-addon" onkeyup="searchlist()"/>
+                                                  </div>
+                                            <span class="d-block m-t-5">Assign <code>coupons</code> to user</span>
                                         </div>
-                                        <div class="card-body table-border-style">
-                                            
+                                        <div class="card-body">
+                                            <form>
+                                                <input type="checkbox" id="sa" name="Select All" onclick="checkall()"><label style="margin: 5px;"><h5><i>Select All</i></h5></label><br>
+                                                <div class="form-group" style="max-height: 300px; overflow-y: scroll;" id="ul">
+                                                    
+                                                </div>
+                                                <div class="form-group">
+                                                    <select class="form-control" id="cp">
+                                                    </select>
+                                                </div>
+                                                <button id="assign" style="width: 100%;" type="button" class="btn btn-primary" data-toggle="tooltip">Assign</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Add Coupon</h5>
+                                            <span class="d-block m-t-5">Add <code>new coupon</code> details here</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label>Code</label>
+                                                    <input id="code" type="text" class="form-control" placeholder="Coupon Code" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Description</label>
+                                                    <input id="desc" type="text" class="form-control" placeholder="Coupon Description" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Discount</label>
+                                                    <input id="amt" type="text" class="form-control" placeholder="Discount Amount" required>
+                                                </div>
+                                                <br>
+                                                <button id="rsave" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Add Coupon</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -192,20 +230,35 @@
 	<script src="assets/js/pcoded.min.js"></script>
 
     <script>
+        const checkall = () => {
+            var selectall = document.getElementById("sa");
+            if(selectall.checked){
+                var ul = document.getElementById('ul');
+                let chk = ul.getElementsByTagName('input');
+                
+                for(var i=0;i<chk.length;i++){
+                    chk[i].checked=true;
+                }
+            }
+            else{
+                var ul = document.getElementById('ul');
+                let chk = ul.getElementsByTagName('input');
+                
+                for(var i=0;i<chk.length;i++){
+                    chk[i].checked=false;
+                }
+            }
+        }
         const search = () => {
             let filter = document.getElementById("myInput").value.toUpperCase();
             let myTable = document.getElementById("user");
             let tr = myTable.getElementsByTagName('tr');
 
             for(var i=0;i<tr.length;i++){
-                let td = tr[i].getElementsByTagName('td')[1];
-                let td1 = tr[i].getElementsByTagName('td')[8];
-                let td2 = tr[i].getElementsByTagName('td')[5];
-                if(td && td1 && td2){
+                let td = tr[i].getElementsByTagName('td')[2];
+                if(td){
                     let textvalue = td.textContent || td.innerHTML;
-                    let textvalue1 = td1.textContent || td1.innerHTML;
-                    let textvalue2 = td2.textContent || td2.innerHTML;
-                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1 || textvalue2.toUpperCase().indexOf(filter)>-1){
+                    if(textvalue.toUpperCase().indexOf(filter)>-1){
                         tr[i].style.display="";
                     }
                     else{
@@ -214,41 +267,51 @@
                 }
             }
         }
-        
+        const searchlist = () => {
+            let filter = document.getElementById("myInput2").value.toUpperCase();
+            var ul = document.getElementById('ul');
+            let chklbl = ul.getElementsByTagName('label');
+            let chk = ul.getElementsByTagName('input');
+            let cbr = ul.getElementsByTagName('br');
+
+            for(var i=0;i<chklbl.length;i++){
+                let textvalue = chklbl[i].textContent || chklbl[i].innerHTML;
+                if(textvalue.toUpperCase().indexOf(filter)>-1){
+                    chk[i].style.display="";
+                    chklbl[i].style.display="";
+                    cbr[i].style.display="";
+                }
+                else{
+                    chk[i].style.display="none";
+                    chklbl[i].style.display="none";
+                    cbr[i].style.display="none";
+                }
+            }
+        }
+
         function addRowHandlers() {
+            SlickLoader.enable();
             var table = document.getElementById("user");
             var rows = table.getElementsByTagName("tr");
             for (i = 0; i < rows.length; i++) {
                 var currentRow = table.rows[i];
                 
                 if(i>0){
-                    var edit = currentRow.getElementsByTagName("td")[3].getElementsByTagName("button")[0];
-                    var editHandler = function(row) {
-                        return function() {
-                            var name =  row.getElementsByTagName("td")[2].textContent;
-                            var id =  row.getElementsByTagName("td")[4].textContent;
-                            document.getElementById("ecard").style.display="";
-                            document.getElementById("rname").value = name;
-                            document.getElementById("rid").value = id;
-                        };
-                    };
-                    edit.onclick = editHandler(currentRow);
-                    var del = currentRow.getElementsByTagName("td")[3].getElementsByTagName("button")[1];
+                    var del = currentRow.getElementsByTagName("td")[4].getElementsByTagName("button")[0];
                     var deleteHandler = function(row) {
                         return function() {
-                            var id =  row.getElementsByTagName("td")[4].textContent;
-                            var name =  row.getElementsByTagName("td")[2].textContent;
+                            var id =  row.getElementsByTagName("td")[5].textContent;
                             var fd = new FormData();
                             fd.append('delete',id);
                             
                             $.ajax({
-                                url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                                url: "https://dtechblradmin.xyz/prodial/api/coupon.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
                                 processData: false,
                                 success: function(response){
-                                    console.log(response.success);
+                                    SlickLoader.disable();
                                     window.location.reload();
                                 }
                             });
@@ -258,85 +321,70 @@
                 }
             }
         }
+
         $(document).ready(function(){
             SlickLoader.enable();
-            var str="<thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Address</th><th>Restaurant</th><th>Order ID</th><th>Order</th><th>Amount</th><th>Status</th><th>Action</th><th style='display:none;'>ID</th></thead><tbody>";
-            var stat="";
+            var str="<thead><tr><th>#</th><th>Code</th><th>Description</th><th>Discount</th><th>Action</th><th style='display:none;'>ID</th></thead><tbody>";
+            var str2="<option value='0'>Select a Coupon</option>";
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/orders.php?order=o',
+                url: 'https://dtechblradmin.xyz/prodial/api/coupon.php',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
                     if(response.success){
                         $.each(response.data, function(index,item){
-                            var uid = item.uid;
-                            var phone = item.phone;
-                            var name = item.name;
-                            var address = item.address;
-                            var amt = item.total;
-                            stat = item.status;
-                            var prod = item.product;
-                            if(address.length>50){
-                                var po = address.indexOf(" ",50);
-                                address= address.substring(0,po)+"<br>"+address.substring(po);
-                            }
-                            if(address.length>100){
-                                var po = address.indexOf(" ",100);
-                                address= address.substring(0,po)+"<br>"+address.substring(po);
-                            }
-                            if(address.length>150){
-                                var po = address.indexOf(" ",150);
-                                address= address.substring(0,po)+"<br>"+address.substring(po);
-                            }
-                            str= str + "<tr><td>"+(index+1)+"</td><td>"+name+"</td><td>"+phone+"</td><td>"+address+"</td><td>"+item.res_name+"</td><td>"+item.id+"</td><td>";
-                            $.each(prod, function(idx,product){
-                                var itemid = product.product_id;
-                                var items = product.item;
-                                var prname = product.pr_name;
-                                var ip = product.iprice;
-                                str=str+ ""+prname+"    ("+items+") - ₹ "+ip+"<br>";
-                            })
-                            str=str + "</td><td>₹ "+amt+"</td>";
-
-                            if(item.status==="PENDING")
-                            {
-                                str=str+"<td><span class='badge badge-pill badge-danger'>"+item.status+"</span></td>";
-                                str=str+"<td><button type='button' class='btn btn-outline-primary' data-toggle='tooltip'>Assign</button>";
-                            }
-                            if(item.status==="COMPLETED")
-                                str=str+"<td><span class='badge badge-pill badge-success'>"+item.status+"</span></td><td>";
-                            if(item.status==="ASSIGNED")
-                                str=str+"<td><span class='badge badge-pill badge-primary'>"+item.status+"</span></td><td>";
-                            if(item.status==="PICKED UP")
-                                str=str+"<td><span class='badge badge-pill badge-warning'>"+item.status+"</span></td><td>";
-                            str=str+"<button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></span></td></tr>";
+                            
+                            str=str+ "<tr><td><h5>"+(index+1)+"</h5></td><td><h3>"+item.code+"</h3></td><td><h5>"+item.description+"</h5></td><td><h5> ₹ "+item.discount+"</h5></td><td><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td></tr>";
+                            str2 = str2 + "<option value='"+item.id+"'>"+item.code+"</option>";
                         })
                         document.getElementById("user").innerHTML = str+"</tbody>";
-                        
+                        document.getElementById("cp").innerHTML = str2;
                     }
                     else{
                         console.log(response.message);
                     }
                     SlickLoader.disable();
+                    addRowHandlers();
                 }
             });
-            document.getElementById("close").onclick= function() {
-                document.getElementById("ecard").style.display = "none";
-            };
+            var cs="";
+            SlickLoader.enable();
+            $.ajax({
+                type: 'GET',
+                url: 'https://dtechblradmin.xyz/prodial/api/user.php?user=user',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.success);
+                    if(response.success){
+                        var ul = document.getElementById('ul');
+                        $.each(response.data, function(index,item){
+
+                            cs = cs+'<input type="checkbox" name="'+item.name+'" value="'+item.phone+'"><label style="margin: 5px;">'+item.name+' - '+item.phone+'</label><br>';
+                        })
+                    }
+                    else{
+                        console.log(response.message);
+                    }
+                    SlickLoader.disable();
+                    document.getElementById('ul').innerHTML=cs;
+                }
+            });
+
             document.getElementById("rsave").onclick= function() {
                 SlickLoader.enable();
-                var name = document.getElementById("rname1").value;
+                var code = document.getElementById("code").value;
+                var desc = document.getElementById("desc").value;
+                var amt = document.getElementById("amt").value;
 
-                var file= $('#rlogo1')[0].files[0];
                 var fd = new FormData();
 
-                fd.append('name',name);
-                fd.append('file',file);
-                
+                fd.append('coupon',code);
+                fd.append('description',desc);
+                fd.append('amount',amt);
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    url: "https://dtechblradmin.xyz/prodial/api/coupon.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -346,23 +394,35 @@
                         window.location.reload();
                     }
                 });
-            };
+            }; 
+            
+            document.getElementById("assign").onclick= function() {
+                //SlickLoader.enable();
+                var ul = document.getElementById('ul');
+                let chk = ul.getElementsByTagName('input');
+                var sc = "";
+                for(var i=0;i<chk.length;i++){
+                    if(chk[i].checked){
+                        sc=sc+chk[i].value+",";
+                    }
+                }
+                if(sc.length>0){
+                    sc=sc.substr(0,sc.lastIndexOf(','));
+                }
+                console.log(sc);
+                var code = document.getElementById('cp').value;
 
-            document.getElementById("rupdate").onclick= function() {
-                SlickLoader.enable();
-                var name = document.getElementById("rname").value;
-                var id = document.getElementById("rid").value;
-
-                var file= $('#rlogo')[0].files[0];
+                if(code==0){
+                    alert("Please Select a coupon to assign.");
+                    return;
+                }
                 var fd = new FormData();
 
-                fd.append('name',name);
-                fd.append('id',id);
-                fd.append('file',file);
-                
+                fd.append('code',code);
+                fd.append('phones',sc);
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    url: "https://dtechblradmin.xyz/prodial/api/coupon.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -372,9 +432,7 @@
                         window.location.reload();
                     }
                 });
-            };
-
-            document.getElementById("ecard").style.display="none";   
+            }; 
             
         });
     </script>

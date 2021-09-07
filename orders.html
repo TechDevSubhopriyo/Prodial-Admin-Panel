@@ -201,11 +201,13 @@
                 let td = tr[i].getElementsByTagName('td')[1];
                 let td1 = tr[i].getElementsByTagName('td')[8];
                 let td2 = tr[i].getElementsByTagName('td')[5];
-                if(td && td1 && td2){
+                let td3 = tr[i].getElementsByTagName('td')[4];
+                if(td && td1 && td2 && td2){
                     let textvalue = td.textContent || td.innerHTML;
                     let textvalue1 = td1.textContent || td1.innerHTML;
                     let textvalue2 = td2.textContent || td2.innerHTML;
-                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1 || textvalue2.toUpperCase().indexOf(filter)>-1){
+                    let textvalue3 = td3.textContent || td3.innerHTML;
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1 || textvalue2.toUpperCase().indexOf(filter)>-1 || textvalue3.toUpperCase().indexOf(filter)>-1){
                         tr[i].style.display="";
                     }
                     else{

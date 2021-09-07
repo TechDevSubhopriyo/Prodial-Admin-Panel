@@ -300,6 +300,7 @@
                     var del = currentRow.getElementsByTagName("td")[4].getElementsByTagName("button")[0];
                     var deleteHandler = function(row) {
                         return function() {
+                            SlickLoader.enable();
                             var id =  row.getElementsByTagName("td")[5].textContent;
                             var fd = new FormData();
                             fd.append('delete',id);
@@ -382,6 +383,7 @@
                 fd.append('coupon',code);
                 fd.append('description',desc);
                 fd.append('amount',amt);
+                console.log(fd);
                 
                 $.ajax({
                     url: "https://dtechblradmin.xyz/prodial/api/coupon.php",
@@ -397,7 +399,7 @@
             }; 
             
             document.getElementById("assign").onclick= function() {
-                //SlickLoader.enable();
+                SlickLoader.enable();
                 var ul = document.getElementById('ul');
                 let chk = ul.getElementsByTagName('input');
                 var sc = "";

@@ -139,7 +139,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Users</h6>
-													<h3 class="m-b-0 text-white">150</h3>
+													<h3 class="m-b-0 text-white"  id="users"></h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-user text-c-red f-18"></i>
@@ -155,7 +155,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Categories</h6>
-													<h3 class="m-b-0 text-white">28</h3>
+													<h3 class="m-b-0 text-white" id="category"></h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-database text-c-blue f-18"></i>
@@ -171,7 +171,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Products</h6>
-													<h3 class="m-b-0 text-white">250</h3>
+													<h3 class="m-b-0 text-white"  id="product"></h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-dollar-sign text-c-green f-18"></i>
@@ -187,7 +187,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Orders</h6>
-													<h3 class="m-b-0 text-white">6,784</h3>
+													<h3 class="m-b-0 text-white"  id="orders"></h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-shopping-basket text-c-yellow f-18"></i>
@@ -197,13 +197,13 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="user">
+								<div class="col-xl-3 col-md-6"><a href="coupon">
 									<div class="card prod-p-card bg-c-green">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Coupons</h6>
-													<h3 class="m-b-0 text-white">5</h3>
+													<h3 class="m-b-0 text-white"  id="coupon"></h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-tags text-c-green f-18"></i>
@@ -219,7 +219,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Restaurants</h6>
-													<h3 class="m-b-0 text-white">48</h3>
+													<h3 class="m-b-0 text-white"  id="restaurant"></h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-home text-c-red f-18"></i>
@@ -235,7 +235,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Riders</h6>
-													<h3 class="m-b-0 text-white">15</h3>
+													<h3 class="m-b-0 text-white"  id="rider">-</h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-motorcycle text-c-yellow f-18"></i>
@@ -251,7 +251,7 @@
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Earnings</h6>
-													<h3 class="m-b-0 text-white">Rs. 5890</h3>
+													<h3 class="m-b-0 text-white"  id="earning"></h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-dollar-sign text-c-blue f-18"></i>
@@ -313,7 +313,27 @@
                                         </div>
 									</div>
 								</div>
-								<div class="col-md-6 col-xl-4">
+								<div class="col-md-6 col-xl-2">
+									<div class="card user-card">
+										<div class="card-header">
+											<span><h5>Refer Coupon </h5><h4 style="float: right;" id="code"></h4></span>
+										</div>
+										<div class="card-body table-border-style">
+                                            <div class="table-responsive" style="overflow-x: hidden;">
+                                                <form>
+													<div class="form-group">
+														<label>Select Default Refer Coupon</label>
+														<select id="codes" class="form-control">
+														</select>
+													</div>
+													<br>
+													<button id="savecode" style="width: 100%;" type="button" class="btn btn-primary" data-toggle="tooltip">Save</button>
+												</form>
+                                            </div>
+                                        </div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xl-3">
 									<div class="card user-card">
 										<div class="card-header">
 											<h5>Profile</h5>
@@ -427,15 +447,54 @@
 
 			$.ajax({
 				type: 'GET',
+				url: 'https://dtechblradmin.xyz/prodial/api/counts.php',
+				dataType: 'json',
+				success: function(response){
+					console.log(response.success);
+					if(response.success){
+						document.getElementById('restaurant').innerHTML= response.restaurant;
+						document.getElementById('users').innerHTML= response.user;
+						document.getElementById('coupon').innerHTML= response.coupon;
+						document.getElementById('category').innerHTML= response.category;
+						document.getElementById('orders').innerHTML= response.orders;
+						document.getElementById('product').innerHTML= response.product;
+						document.getElementById('earning').innerHTML= "₹ "+response.earning;
+					}
+				}
+			});
+
+			$.ajax({
+				type: 'GET',
 				url: 'https://dtechblradmin.xyz/prodial/api/delivery_charge.php',
 				dataType: 'json',
 				success: function(response){
 					console.log(response.success);
 					if(response.success){
 						document.getElementById("ch").innerHTML = " ₹ "+response.charge;
+						document.getElementById("code").innerHTML = response.rcid;
 					}
 				}
 			});
+			var str2="<option value='0'>Select a Coupon</option>";
+			$.ajax({
+                type: 'GET',
+                url: 'https://dtechblradmin.xyz/prodial/api/coupon.php',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.success);
+                    if(response.success){
+                        $.each(response.data, function(index,item){
+                            str2 = str2 + "<option value='"+item.id+"'>"+item.code+"</option>";
+                        })
+						
+                        document.getElementById("codes").innerHTML = str2;
+                    }
+                    else{
+                        console.log(response.message);
+                    }
+                    SlickLoader.disable();
+                }
+            });
 
 			document.getElementById("rsave").onclick= function() {
                 SlickLoader.enable();
@@ -476,6 +535,30 @@
                     }
                 });
             };
+
+			document.getElementById("savecode").onclick= function() {
+                SlickLoader.enable();
+                var c = document.getElementById("codes").value;
+				if(c==0){
+					alert("Please Select a code");
+					SlickLoader.disable();
+					return;
+				}
+                var fd = new FormData();
+                fd.append('rcode',c);
+                
+                $.ajax({
+                    url: "https://dtechblradmin.xyz/prodial/api/delivery_charge.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        window.location.reload();
+                    }
+                });
+            };
+
         });
 	</script>
 </body>

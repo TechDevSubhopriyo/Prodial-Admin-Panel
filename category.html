@@ -31,7 +31,6 @@
             border-radius: 10%;
         }
         .btn{
-            width: 30%;
             height: 30px;
             font-size: small;
             padding: 5px;
@@ -274,7 +273,7 @@
                             fd.append('delete',id);
                             
                             $.ajax({
-                                url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                                url: "https://prodial.dtechblr.in/api/category.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
@@ -295,7 +294,7 @@
             var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Action</th><th style='display:none;'>ID</th></thead><tbody>";
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/category.php',
+                url: 'https://prodial.dtechblr.in/api/category.php',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -311,6 +310,7 @@
                     else{
                         console.log(response.message);
                     }
+                    SlickLoader.disable();
                     addRowHandlers();
                 }
             });
@@ -329,7 +329,7 @@
                 
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    url: "https://prodial.dtechblr.in/api/category.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -355,7 +355,7 @@
                 
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    url: "https://prodial.dtechblr.in/api/category.php",
                     type: 'post',
                     data: fd,
                     contentType: false,

@@ -71,7 +71,7 @@
 			var pass=document.getElementById("password").value; 
 			console.log(user,pass);
 			SlickLoader.enable();
-			var link='https://dtechblradmin.xyz/prodial/api/login.php?user='+user+'&pass='+pass;
+			var link='https://prodial.dtechblr.in/api/login.php?user='+user+'&pass='+pass;
 			console.log(link);
 				$.ajax({
 				type: 'GET',
@@ -94,6 +94,7 @@
 					else{
 						alert(response.message);
 					}
+					SlickLoader.disable();
 				}
 			});
 		

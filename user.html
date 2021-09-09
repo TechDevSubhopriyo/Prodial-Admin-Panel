@@ -192,6 +192,35 @@
 	<script src="assets/js/pcoded.min.js"></script>
 
     <script>
+        function addRowHandlers() {
+            var table = document.getElementById("user");
+            var rows = table.getElementsByTagName("tr");
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = table.rows[i];
+                if(i>0){
+                    var del = currentRow.getElementsByTagName("td")[8].getElementsByTagName("button")[0];
+                    var delHandler = function(row) {
+                        return function() {
+                            var id =  row.getElementsByTagName("td")[3].textContent;
+                            
+                            SlickLoader.enable();
+                            
+                            $.ajax({
+                                url: "https://prodial.dtechblr.in/api/user.php?delete="+id,
+                                type: 'get',
+                                dataType: 'json',
+                                success: function(response){
+                                    console.log(response.success);
+                                    window.location.reload();
+                                }
+                            });
+                        };
+                    };
+                    del.onclick = delHandler(currentRow);
+                }
+            }
+        }
+
         const search = () => {
             let filter = document.getElementById("myInput").value.toUpperCase();
             let myTable = document.getElementById("user");
@@ -217,7 +246,7 @@
             var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Referal Code</th><th>Referred By</th><th>Action</th></tr></thead><tbody>";
                 $.ajax({
                     type: 'GET',
-                    url: 'https://dtechblradmin.xyz/prodial/api/user.php?user=user',
+                    url: 'https://prodial.dtechblr.in/api/user.php?user=user',
                     dataType: 'json',
                     success: function(response){
                         console.log(response.success);
@@ -238,6 +267,7 @@
                             })
                             SlickLoader.disable();
                             document.getElementById("user").innerHTML = str+"</tbody>";
+                            addRowHandlers();
                         }
                         else{
                             console.log(response.message);

@@ -96,6 +96,16 @@
 						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
 					</li>
 				</ul>
+				<div class="card text-center">
+					<div class="card-block">
+						<!-- <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button> -->
+						<!-- <i class="fas fas-file-code f-40"></i> -->
+						<i class="fas fa-laptop-code f-40"></i>
+						<h5 class="mt-3">Admin Panel</h5>
+						<p>Designed and Developed by experts at D.Tech, Bangalore</p>
+						<a href="https://dtechblr.in/" target="_blank" class="btn btn-gradient-primary btn-sm text-white m-0">Visit Us</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</nav>
@@ -307,13 +317,13 @@
 														<input id="charge" type="number" class="form-control" placeholder="Delivery Charge" required>
 													</div>
 													<br>
-													<button id="savec" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Update</button>
+													<button id="savec" style="width: 100%;" type="button" class="btn btn-warning" data-toggle="tooltip">Update</button>
 												</form>
                                             </div>
                                         </div>
 									</div>
 								</div>
-								<div class="col-md-6 col-xl-2">
+								<div class="col-md-6 col-xl-3">
 									<div class="card user-card">
 										<div class="card-header">
 											<span><h5>Refer Coupon </h5><h4 style="float: right;" id="code"></h4></span>
@@ -332,48 +342,29 @@
                                             </div>
                                         </div>
 									</div>
-								</div>
-								<div class="col-md-6 col-xl-3">
 									<div class="card user-card">
 										<div class="card-header">
 											<h5>Profile</h5>
 										</div>
-										<div class="card-body  text-center">
-											<div class="usre-image">
-												<img src="assets/images/widget/img-round1.jpg" class="img-radius wid-100 m-auto" alt="User-Profile-Image">
-											</div>
-											<h6 class="f-w-600 m-t-25 fixed-button .btnm-b-10">Alessa Robert</h6>
-											<p>Active | Male | Born 23.05.1992</p>
-											<hr>
-											<p class="m-t-15">Activity Level: 87%</p>
-											<div class="bg-c-blue counter-block m-t-10 p-20">
-												<div class="row">
-													<div class="col-4">
-														<i class="fas fa-calendar-check text-white f-20"></i>
-														<h6 class="text-white mt-2 mb-0">1256</h6>
-													</div>
-													<div class="col-4">
-														<i class="fas fa-user text-white f-20"></i>
-														<h6 class="text-white mt-2 mb-0">8562</h6>
-													</div>
-													<div class="col-4">
-														<i class="fas fa-folder-open text-white f-20"></i>
-														<h6 class="text-white mt-2 mb-0">189</h6>
-													</div>
-												</div>
-											</div>
-											<p class="m-t-15">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-											<hr>
-											<div class="row justify-content-center user-social-link">
-												<div class="col-auto"><a href="#!"><i class="fab fa-facebook-f text-primary f-22"></i></a></div>
-												<div class="col-auto"><a href="#!"><i class="fab fa-twitter text-c-info f-22"></i></a></div>
-												<div class="col-auto"><a href="#!"><i class="fab fa-dribbble text-c-red f-22"></i></a></div>
-											</div>
+										<div class="card-body">
+											<form>
+												<div class="form-group">
+                                                    <label>Username</label>
+                                                    <input id="un" type="text" class="form-control" placeholder="Username" required>
+                                                </div>
+												<div class="form-group">
+                                                    <label>Password</label>
+													<input id="password" type="password" class="form-control" placeholder="Password">
+                                                </div><br>
+												<button id="savep" style="width: 100%;" type="button" class="btn btn-secondary" data-toggle="tooltip">Save</button>
+											</form>
 										</div>
 									</div>
 								</div>
+								<div class="col-md-6 col-xl-3">
+								
+								</div>
 							</div>
-
 							<!-- [ Main Content ] end -->
 						</div>
 					</div>
@@ -382,7 +373,6 @@
 		</div>
 	</div>
 	<!-- [ Main Content ] end -->
-
 	<!-- Required Js -->
 	<script src="assets/js/vendor-all.min.js"></script>
 	<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -404,7 +394,7 @@
                             fd.append('delete',id);
                             
                             $.ajax({
-                                url: "https://dtechblradmin.xyz/prodial/api/carousal.php",
+                                url: "https://prodial.dtechblr.in/api/carousal.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
@@ -426,13 +416,15 @@
             var str="<thead><tr><th>#</th><th>Image</th><th>Action</th><th style='display:none;'>ID</th></tr></thead><tbody>";
 			$.ajax({
 				type: 'GET',
-				url: 'https://dtechblradmin.xyz/prodial/api/carousal.php',
+				url: 'https://prodial.dtechblr.in/api/carousal.php',
 				dataType: 'json',
 				success: function(response){
 					console.log(response.success);
 					if(response.success){
 						$.each(response.carousel, function(index,item){
-							var link=item['image'];
+							var link = item['image'];
+                            link = link.split(' ').join('%20');
+							console.log(link);
 							str=str+ "<tr><td><h5>"+(index+1)+"</h5></td><td><img loading='lazy' class='c-img' src='"+link+"'></td><td><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td></tr>";
 						})
 						SlickLoader.disable();
@@ -447,7 +439,7 @@
 
 			$.ajax({
 				type: 'GET',
-				url: 'https://dtechblradmin.xyz/prodial/api/counts.php',
+				url: 'https://prodial.dtechblr.in/api/counts.php',
 				dataType: 'json',
 				success: function(response){
 					console.log(response.success);
@@ -465,7 +457,46 @@
 
 			$.ajax({
 				type: 'GET',
-				url: 'https://dtechblradmin.xyz/prodial/api/delivery_charge.php',
+				url: 'https://prodial.dtechblr.in/api/profile.php',
+				dataType: 'json',
+				success: function(response){
+					console.log(response.success);
+					if(response.success){
+						document.getElementById('un').value= response.username;
+						document.getElementById('password').value= response.password;
+					}
+				}
+			});
+
+			document.getElementById("savep").onclick= function() {
+                SlickLoader.enable();
+
+				var unm = document.getElementById('un').value;
+				var ped =document.getElementById('password').value;
+
+				var fd = new FormData();
+                fd.append('username',unm);
+				fd.append('password',ped);
+
+				$.ajax({
+					type: 'POST',
+					url: 'https://prodial.dtechblr.in/api/profile.php',
+					data: fd,
+					contentType: false,
+                    processData: false,
+					success: function(response){
+						console.log(response.success);
+						if(response.success){
+							window.location.reload();
+						}
+						SlickLoader.disable();
+					}
+				});
+			}
+
+			$.ajax({
+				type: 'GET',
+				url: 'https://prodial.dtechblr.in/api/delivery_charge.php',
 				dataType: 'json',
 				success: function(response){
 					console.log(response.success);
@@ -478,7 +509,7 @@
 			var str2="<option value='0'>Select a Coupon</option>";
 			$.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/coupon.php',
+                url: 'https://prodial.dtechblr.in/api/coupon.php',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -503,7 +534,7 @@
                 fd.append('file',file);
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/carousal.php",
+                    url: "https://prodial.dtechblr.in/api/carousal.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -525,7 +556,7 @@
                 fd.append('dc',c);
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/delivery_charge.php",
+                    url: "https://prodial.dtechblr.in/api/delivery_charge.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -548,7 +579,7 @@
                 fd.append('rcode',c);
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/delivery_charge.php",
+                    url: "https://prodial.dtechblr.in/api/delivery_charge.php",
                     type: 'post',
                     data: fd,
                     contentType: false,

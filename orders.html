@@ -202,12 +202,14 @@
                 let td1 = tr[i].getElementsByTagName('td')[8];
                 let td2 = tr[i].getElementsByTagName('td')[5];
                 let td3 = tr[i].getElementsByTagName('td')[4];
+                let td4 = tr[i].getElementsByTagName('td')[2];
                 if(td && td1 && td2 && td2){
                     let textvalue = td.textContent || td.innerHTML;
                     let textvalue1 = td1.textContent || td1.innerHTML;
                     let textvalue2 = td2.textContent || td2.innerHTML;
                     let textvalue3 = td3.textContent || td3.innerHTML;
-                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1 || textvalue2.toUpperCase().indexOf(filter)>-1 || textvalue3.toUpperCase().indexOf(filter)>-1){
+                    let textvalue4 = td4.textContent || t4d.innerHTML;
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1 || textvalue2.toUpperCase().indexOf(filter)>-1 || textvalue3.toUpperCase().indexOf(filter)>-1 || textvalue4.toUpperCase().indexOf(filter)>-1){
                         tr[i].style.display="";
                     }
                     else{
@@ -244,7 +246,7 @@
                             fd.append('delete',id);
                             
                             $.ajax({
-                                url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                                url: "https://prodial.dtechblr.in/api/category.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
@@ -266,7 +268,7 @@
             var stat="";
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/orders.php?order=o',
+                url: 'https://prodial.dtechblr.in/api/orders.php?order=o',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -338,7 +340,7 @@
                 
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    url: "https://prodial.dtechblr.in/api/category.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -364,7 +366,7 @@
                 
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/category.php",
+                    url: "https://prodial.dtechblr.in/api/category.php",
                     type: 'post',
                     data: fd,
                     contentType: false,

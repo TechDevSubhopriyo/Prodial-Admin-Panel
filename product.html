@@ -36,7 +36,6 @@
             border-radius: 10%;
         }
         .btn{
-            width: 30%;
             height: 30px;
             font-size: small;
             padding: 5px;
@@ -412,7 +411,7 @@
                             SlickLoader.enable();
                             
                             $.ajax({
-                                url: "https://dtechblradmin.xyz/prodial/api/product.php",
+                                url: "https://prodial.dtechblr.in/api/product.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
@@ -434,7 +433,7 @@
             var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Price</th><th>Restaurant Name</th><th  style='display:none;'>Stock</th><th>Action</th><th style='display:none;'>Offer Price</th><th style='display:none;'>Rating</th><th style='display:none;'>Total Rating</th><th style='display:none;'>Category</th><th style='display:none;'>Description</th><th style='display:none;'>ID</th></thead><tbody>";
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/product.php?product=product',
+                url: 'https://prodial.dtechblr.in/api/product.php?product=product',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -450,13 +449,14 @@
                     else{
                         console.log(response.message);
                     }
+                    SlickLoader.disable();
                     addRowHandlers();
                 }
             });
             str2="<option value='0'>Select a Category</option>";
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/category.php',
+                url: 'https://prodial.dtechblr.in/api/category.php',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -474,7 +474,7 @@
             str3="<option value='0'>Select a Restaurant</option>";
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/restaurants.php?restaurants=restaurants',
+                url: 'https://prodial.dtechblr.in/api/restaurants.php?restaurants=restaurants',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -543,7 +543,7 @@
                 
                 SlickLoader.enable();
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/product.php",
+                    url: "https://prodial.dtechblr.in/api/product.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -580,7 +580,7 @@
                 
                 SlickLoader.enable();
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/product.php",
+                    url: "https://prodial.dtechblr.in/api/product.php",
                     type: 'post',
                     data: fd,
                     contentType: false,

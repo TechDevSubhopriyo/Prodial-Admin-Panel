@@ -255,10 +255,12 @@
             let tr = myTable.getElementsByTagName('tr');
 
             for(var i=0;i<tr.length;i++){
-                let td = tr[i].getElementsByTagName('td')[2];
-                if(td){
+                let td = tr[i].getElementsByTagName('td')[1];
+                let td1 = tr[i].getElementsByTagName('td')[3];
+                if(td && td1){
                     let textvalue = td.textContent || td.innerHTML;
-                    if(textvalue.toUpperCase().indexOf(filter)>-1){
+                    let textvalue1 = td1.textContent || td1.innerHTML;
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1){
                         tr[i].style.display="";
                     }
                     else{
@@ -306,7 +308,7 @@
                             fd.append('delete',id);
                             
                             $.ajax({
-                                url: "https://dtechblradmin.xyz/prodial/api/coupon.php",
+                                url: "https://prodial.dtechblr.in/api/coupon.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
@@ -329,7 +331,7 @@
             var str2="<option value='0'>Select a Coupon</option>";
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/coupon.php',
+                url: 'https://prodial.dtechblr.in/api/coupon.php',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -353,7 +355,7 @@
             SlickLoader.enable();
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/user.php?user=user',
+                url: 'https://prodial.dtechblr.in/api/user.php?user=user',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -386,7 +388,7 @@
                 console.log(fd);
                 
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/coupon.php",
+                    url: "https://prodial.dtechblr.in/api/coupon.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -399,7 +401,6 @@
             }; 
             
             document.getElementById("assign").onclick= function() {
-                SlickLoader.enable();
                 var ul = document.getElementById('ul');
                 let chk = ul.getElementsByTagName('input');
                 var sc = "";
@@ -422,9 +423,9 @@
 
                 fd.append('code',code);
                 fd.append('phones',sc);
-                
+                SlickLoader.enable();
                 $.ajax({
-                    url: "https://dtechblradmin.xyz/prodial/api/coupon.php",
+                    url: "https://prodial.dtechblr.in/api/coupon.php",
                     type: 'post',
                     data: fd,
                     contentType: false,

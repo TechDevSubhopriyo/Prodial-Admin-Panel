@@ -36,7 +36,6 @@
             border-radius: 10%;
         }
         .btn{
-            width: 30%;
             height: 30px;
             font-size: small;
             padding: 5px;
@@ -299,7 +298,7 @@
             var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Price</th><th style='display:none;'>Restaurant Name</th><th  style='display:none;'>Stock</th><th style='display:none;'>Action</th><th>Offer Price</th><th style='display:none;'>Rating</th><th style='display:none;'>Total Rating</th><th style='display:none;'>Category</th><th>Offer Percent</th><th style='display:none;'>Description</th></thead><tbody>";
             $.ajax({
                 type: 'GET',
-                url: 'https://dtechblradmin.xyz/prodial/api/offers.php?offer=offer',
+                url: 'https://prodial.dtechblr.in/api/offers.php?offer=offer',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -319,6 +318,7 @@
                     else{
                         console.log(response.message);
                     }
+                    SlickLoader.disable();
                     addRowHandlers();
                 }
             });

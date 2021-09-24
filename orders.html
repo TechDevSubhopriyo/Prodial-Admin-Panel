@@ -108,6 +108,9 @@
 						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
 					</li>
                     <li class="nav-item">
+						<a href="rider" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Rider</span></a>
+					</li>
+                    <li class="nav-item">
 						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
 					</li>
 				</ul>
@@ -172,7 +175,12 @@
                                             <span class="d-block m-t-5">Assign <code>order</code> to available <code>rider</code></span>
                                         </div>
                                         <div class="card-body table-border-style">
-                                            
+                                            <label>Order ID</label>
+                                            <input id="oid" type="number" class="form-control" placeholder="Order ID" required disabled><br>
+                                            <select class="form-control" id="ride" required>
+                                            </select>
+                                            <br>
+                                            <button id="save" style="width: 100%;" type="button" class="btn btn-primary" data-toggle="tooltip">Assign</button>
                                         </div>
                                     </div>
                                 </div>
@@ -226,40 +234,17 @@
                 var currentRow = table.rows[i];
                 
                 if(i>0){
-                    var edit = currentRow.getElementsByTagName("td")[3].getElementsByTagName("button")[0];
-                    var editHandler = function(row) {
+                    var assign = currentRow.getElementsByTagName("td")[9].getElementsByTagName("button")[0];
+                    var assignHandler = function(row) {
                         return function() {
-                            var name =  row.getElementsByTagName("td")[2].textContent;
-                            var id =  row.getElementsByTagName("td")[4].textContent;
-                            document.getElementById("ecard").style.display="";
-                            document.getElementById("rname").value = name;
-                            document.getElementById("rid").value = id;
+                            var id =  row.getElementsByTagName("td")[10].textContent;
+                            document.getElementById("oid").value = id;
+                            console.log(id);
                         };
                     };
-                    edit.onclick = editHandler(currentRow);
-                    var del = currentRow.getElementsByTagName("td")[3].getElementsByTagName("button")[1];
-                    var deleteHandler = function(row) {
-                        return function() {
-                            var id =  row.getElementsByTagName("td")[4].textContent;
-                            var name =  row.getElementsByTagName("td")[2].textContent;
-                            var fd = new FormData();
-                            fd.append('delete',id);
-                            
-                            $.ajax({
-                                url: "https://prodial.dtechblr.in/api/category.php",
-                                type: 'post',
-                                data: fd,
-                                contentType: false,
-                                processData: false,
-                                success: function(response){
-                                    console.log(response.success);
-                                    window.location.reload();
-                                }
-                            });
-                        };
-                    };
-                    del.onclick = deleteHandler(currentRow);
+                    assign.onclick = assignHandler(currentRow);
                 }
+                
             }
         }
         $(document).ready(function(){
@@ -299,25 +284,34 @@
                                 var items = product.item;
                                 var prname = product.pr_name;
                                 var ip = product.iprice;
+                                if(prname==null){
+                                    prname="Unknown"
+                                }
                                 str=str+ ""+prname+"    ("+items+") - ₹ "+ip+"<br>";
                             })
                             str=str + "</td><td>₹ "+amt+"</td>";
 
-                            if(item.status==="PENDING")
-                            {
-                                str=str+"<td><span class='badge badge-pill badge-danger'>"+item.status+"</span></td>";
-                                str=str+"<td><button type='button' class='btn btn-outline-primary' data-toggle='tooltip'>Assign</button>";
-                            }
                             if(item.status==="COMPLETED")
                                 str=str+"<td><span class='badge badge-pill badge-success'>"+item.status+"</span></td><td>";
                             if(item.status==="ASSIGNED")
                                 str=str+"<td><span class='badge badge-pill badge-primary'>"+item.status+"</span></td><td>";
                             if(item.status==="PICKED UP")
                                 str=str+"<td><span class='badge badge-pill badge-warning'>"+item.status+"</span></td><td>";
-                            str=str+"<button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></span></td></tr>";
+                            if(item.status==="READY")
+                                str=str+"<td><span class='badge badge-pill badge-secondary'>"+item.status+"</span></td><td>";
+                            if(item.status==="PENDING")
+                                str=str+"<td><span class='badge badge-pill badge-danger'>"+item.status+"</span></td><td>";
+                            if(item.rider=="0")
+                            {
+                                str=str+"<button type='button' class='btn btn-outline-primary' data-toggle='tooltip'>Assign</button>";
+                            }
+                            else{
+                                str=str+"<button style='display: none;' type='button' class='btn btn-outline-primary' data-toggle='tooltip'>Assign</button>";
+                            }
+                            str=str+"<button style='display: none;' type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></span></td><td style='display:none;'>"+item.id+"</td></tr>";
                         })
                         document.getElementById("user").innerHTML = str+"</tbody>";
-                        
+                        addRowHandlers();
                     }
                     else{
                         console.log(response.message);
@@ -325,61 +319,57 @@
                     SlickLoader.disable();
                 }
             });
-            document.getElementById("close").onclick= function() {
-                document.getElementById("ecard").style.display = "none";
-            };
-            document.getElementById("rsave").onclick= function() {
-                SlickLoader.enable();
-                var name = document.getElementById("rname1").value;
-
-                var file= $('#rlogo1')[0].files[0];
-                var fd = new FormData();
-
-                fd.append('name',name);
-                fd.append('file',file);
-                
-                
-                $.ajax({
-                    url: "https://prodial.dtechblr.in/api/category.php",
-                    type: 'post',
-                    data: fd,
-                    contentType: false,
-                    processData: false,
-                    success: function(response){
-                        console.log(response.success);
-                        window.location.reload();
-                    }
-                });
-            };
-
-            document.getElementById("rupdate").onclick= function() {
-                SlickLoader.enable();
-                var name = document.getElementById("rname").value;
-                var id = document.getElementById("rid").value;
-
-                var file= $('#rlogo')[0].files[0];
-                var fd = new FormData();
-
-                fd.append('name',name);
-                fd.append('id',id);
-                fd.append('file',file);
-                
-                
-                $.ajax({
-                    url: "https://prodial.dtechblr.in/api/category.php",
-                    type: 'post',
-                    data: fd,
-                    contentType: false,
-                    processData: false,
-                    success: function(response){
-                        console.log(response.success);
-                        window.location.reload();
-                    }
-                });
-            };
-
-            document.getElementById("ecard").style.display="none";   
             
+            var str2="<option value='0'>Select Rider</option>";
+            $.ajax({
+                type: 'GET',
+                url: 'https://prodial.dtechblr.in/api/rider.php?riders=all',
+                dataType: 'json',
+                success: function(response){
+                    console.log(response.success);
+                    if(response.success){
+                        $.each(response.data, function(index,item){
+                            str2=str2+ "<option value='"+item.id+"'>"+item.name+"</option>";
+                            obj={id:item['id'],name:item['name']};
+                            //names.push(obj);
+                        })
+                        document.getElementById("ride").innerHTML = str2;
+                    }
+                    else{
+                        console.log(response.message);
+                    }
+                }
+            });
+
+            document.getElementById("save").onclick = function(){
+                var id = document.getElementById("ride").value;
+                if(id==0){
+                    alert("Please Select a Rider!");
+                    return;
+                }
+                var oid = document.getElementById("oid").value;
+                if(oid==0){
+                    alert("Please Select a Order!");
+                    return;
+                }
+                SlickLoader.enable();
+
+                var fd = new FormData();
+                fd.append("order",oid);
+                fd.append("rider",id);
+                $.ajax({
+                    url: "https://prodial.dtechblr.in/api/orders.php",
+                    type: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    success: function(response){
+                        SlickLoader.disable();
+                        console.log(response.success);
+                        window.location.reload();
+                    }
+                });
+            }
         });
     </script>
 </body>

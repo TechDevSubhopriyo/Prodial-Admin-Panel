@@ -99,6 +99,9 @@
 						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
 					</li>
                     <li class="nav-item">
+						<a href="rider" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Rider</span></a>
+					</li>
+                    <li class="nav-item">
 						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
 					</li>
 				</ul>
@@ -258,6 +261,10 @@
                                 else
                                     src="";    
                                 src += item['image'];
+                                if(src=="data:image/jpeg;base64,"){
+                                    src="https://prodial.dtechblr.in/user.webp";
+                                }
+                                console.log(src);
                                 var address = item.address;
                                 if(address.length>40){
                                     var po = address.indexOf(" ",40);

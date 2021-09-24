@@ -27,8 +27,8 @@
             height: 50px;
         }
         .m-img{
-            height: 80px;
-            border-radius: 10%;
+            height: 40px;
+            border-radius: 50%;
         }
         .btn{
             height: 30px;
@@ -135,11 +135,11 @@
 									<div class="row align-items-center">
 										<div class="col-md-10">
 											<div class="page-header-title">
-												<h5>Coupons</h5>
+												<h5>Riders</h5>
 											</div>
 											<ul class="breadcrumb">
 												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
-												<li class="breadcrumb-item"><a href="#!">Available Coupons</a></li>
+												<li class="breadcrumb-item"><a href="#!">Riders Registered</a></li>
 											</ul>
 										</div>
                                         <div class="input-group col-md-2">
@@ -156,8 +156,8 @@
                                 <div class="col-md-8">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Coupons</h5>
-                                            <span class="d-block m-t-5">Table containing <code>coupon</code> details</span>
+                                            <h5>Rider</h5>
+                                            <span class="d-block m-t-5">Table containing <code>rider</code> details</span>
                                         </div>
                                         <div class="card-body table-border-style">
                                             <div class="table-responsive">
@@ -169,50 +169,79 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <div class="card">
+                                    <div class="card" id="ecard">
                                         <div class="card-header">
-                                            <h5>Assign Coupon</h5>
-                                            <div class="input-group" style="float: right; width: 40%;">
-                                                <input id="myInput2" type="search" class="form-control rounded" placeholder="Search Name, Phone" aria-label="Search"
-                                                  aria-describedby="search-addon" onkeyup="searchlist()"/>
-                                                  </div>
-                                            <span class="d-block m-t-5">Assign <code>coupons</code> to user</span>
+                                            <h5>Edit Rider</h5>
+                                            <button id="close" onclick="clear()" class="btn btn-danger" style="float: right; width: 10%" type="button"  data-toggle="tooltip"><b>X</b></button>
+                                            <span class="d-block m-t-5">Edit <code>selected</code> rider details</span>
                                         </div>
                                         <div class="card-body">
                                             <form>
-                                                <input type="checkbox" id="sa" name="Select All" onclick="checkall()"><label style="margin: 5px;"><h5><i>Select All</i></h5></label><br>
-                                                <div class="form-group" style="max-height: 300px; overflow-y: scroll;" id="ul">
-                                                    
+                                                <div class="form-group">
+                                                    <input id="r_uid" type="hidden" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <select class="form-control" id="cp">
-                                                    </select>
+                                                    <label>Rider Name</label>
+                                                    <input id="rname" type="text" class="form-control" placeholder="Name" required>
                                                 </div>
-                                                <button id="assign" style="width: 100%;" type="button" class="btn btn-primary" data-toggle="tooltip">Assign</button>
+                                                <div class="form-group">
+                                                    <label>Rider Phone</label>
+                                                    <input id="rph1" type="text" maxlength="10" class="form-control" placeholder="Phone Number" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Rider Email</label>
+                                                    <input id="remail1" type="text" class="form-control" placeholder="Email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Rider Address</label>
+                                                    <input id="raddr1" type="text" class="form-control" placeholder="Full Address" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Feedback</label>
+                                                    <input id="rabt1" type="text" class="form-control" placeholder="About Rider" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>ID Proof</label>
+                                                    <input id="rid" type="file" class="form-control" placeholder="Rider ID proof" required>
+                                                </div>
+                                                <br>
+                                                <button id="rupdate" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Update Rider</button>
                                             </form>
                                         </div>
                                     </div>
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Add Coupon</h5>
-                                            <span class="d-block m-t-5">Add <code>new coupon</code> details here</span>
+                                            <h5>Add Rider</h5>
+                                            <span class="d-block m-t-5">Add <code>new rider</code> details here</span>
                                         </div>
                                         <div class="card-body">
                                             <form>
                                                 <div class="form-group">
-                                                    <label>Code</label>
-                                                    <input id="code" type="text" class="form-control" placeholder="Coupon Code" required>
+                                                    <label>Rider Name</label>
+                                                    <input id="rname1" type="text" class="form-control" placeholder="Name" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Description</label>
-                                                    <input id="desc" type="text" class="form-control" placeholder="Coupon Description" required>
+                                                    <label>Rider Phone</label>
+                                                    <input id="rph" type="text" maxlength="10" class="form-control" placeholder="Phone Number" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Discount</label>
-                                                    <input id="amt" type="text" class="form-control" placeholder="Discount Amount" required>
+                                                    <label>Rider Email</label>
+                                                    <input id="remail" type="text" class="form-control" placeholder="Email" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Rider Address</label>
+                                                    <input id="raddr" type="text" class="form-control" placeholder="Full Address" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>Feedback</label>
+                                                    <input id="rabt" type="text" class="form-control" placeholder="About Rider" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>ID Proof</label>
+                                                    <input id="r_id" type="file" class="form-control" placeholder="Rider ID proof" required>
                                                 </div>
                                                 <br>
-                                                <button id="rsave" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Add Coupon</button>
+                                                <button id="rsave" style="width: 100%;" type="button" class="btn btn-primary" data-toggle="tooltip">Add New Rider</button>
                                             </form>
                                         </div>
                                     </div>
@@ -233,37 +262,18 @@
 	<script src="assets/js/pcoded.min.js"></script>
 
     <script>
-        const checkall = () => {
-            var selectall = document.getElementById("sa");
-            if(selectall.checked){
-                var ul = document.getElementById('ul');
-                let chk = ul.getElementsByTagName('input');
-                
-                for(var i=0;i<chk.length;i++){
-                    chk[i].checked=true;
-                }
-            }
-            else{
-                var ul = document.getElementById('ul');
-                let chk = ul.getElementsByTagName('input');
-                
-                for(var i=0;i<chk.length;i++){
-                    chk[i].checked=false;
-                }
-            }
-        }
         const search = () => {
             let filter = document.getElementById("myInput").value.toUpperCase();
             let myTable = document.getElementById("user");
             let tr = myTable.getElementsByTagName('tr');
 
             for(var i=0;i<tr.length;i++){
-                let td = tr[i].getElementsByTagName('td')[1];
-                let td1 = tr[i].getElementsByTagName('td')[3];
+                let td = tr[i].getElementsByTagName('td')[2];
+                let td1 = tr[i].getElementsByTagName('td')[4];
                 if(td && td1){
                     let textvalue = td.textContent || td.innerHTML;
                     let textvalue1 = td1.textContent || td1.innerHTML;
-                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1){
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)==0){
                         tr[i].style.display="";
                     }
                     else{
@@ -272,52 +282,50 @@
                 }
             }
         }
-        const searchlist = () => {
-            let filter = document.getElementById("myInput2").value.toUpperCase();
-            var ul = document.getElementById('ul');
-            let chklbl = ul.getElementsByTagName('label');
-            let chk = ul.getElementsByTagName('input');
-            let cbr = ul.getElementsByTagName('br');
-
-            for(var i=0;i<chklbl.length;i++){
-                let textvalue = chklbl[i].textContent || chklbl[i].innerHTML;
-                if(textvalue.toUpperCase().indexOf(filter)>-1){
-                    chk[i].style.display="";
-                    chklbl[i].style.display="";
-                    cbr[i].style.display="";
-                }
-                else{
-                    chk[i].style.display="none";
-                    chklbl[i].style.display="none";
-                    cbr[i].style.display="none";
-                }
-            }
-        }
-
+        
         function addRowHandlers() {
-            SlickLoader.enable();
             var table = document.getElementById("user");
             var rows = table.getElementsByTagName("tr");
             for (i = 0; i < rows.length; i++) {
                 var currentRow = table.rows[i];
                 
                 if(i>0){
-                    var del = currentRow.getElementsByTagName("td")[4].getElementsByTagName("button")[0];
+                    var edit = currentRow.getElementsByTagName("td")[5].getElementsByTagName("button")[0];
+                    var editHandler = function(row) {
+                        return function() {
+                            var name =  row.getElementsByTagName("td")[2].getElementsByTagName("h4")[0].textContent;
+                            var phone =  row.getElementsByTagName("td")[2].getElementsByTagName("h5")[0].textContent;
+                            var email =  row.getElementsByTagName("td")[2].getElementsByTagName("h6")[0].textContent;
+                            var address =  row.getElementsByTagName("td")[3].textContent;
+                            var review =  row.getElementsByTagName("td")[7].textContent;
+                            var id =  row.getElementsByTagName("td")[6].textContent;
+                            document.getElementById("ecard").style.display="";
+                            document.getElementById("rname").value = name;
+                            document.getElementById("r_uid").value = id;
+                            document.getElementById("rph1").value = phone;
+                            document.getElementById("remail1").value = email;
+                            document.getElementById("raddr1").value = address;
+                            document.getElementById("rabt1").value = review;
+                        };
+                    };
+                    edit.onclick = editHandler(currentRow);
+                    var del = currentRow.getElementsByTagName("td")[5].getElementsByTagName("button")[1];
                     var deleteHandler = function(row) {
                         return function() {
-                            SlickLoader.enable();
-                            var id =  row.getElementsByTagName("td")[5].textContent;
+                            var id =  row.getElementsByTagName("td")[6].textContent;
+                            
                             var fd = new FormData();
                             fd.append('delete',id);
                             
                             $.ajax({
-                                url: "https://prodial.dtechblr.in/api/coupon.php",
+                                url: "https://prodial.dtechblr.in/api/rider.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
                                 processData: false,
                                 success: function(response){
                                     SlickLoader.disable();
+                                    console.log(response.success);
                                     window.location.reload();
                                 }
                             });
@@ -327,25 +335,40 @@
                 }
             }
         }
-
         $(document).ready(function(){
             SlickLoader.enable();
-            var str="<thead><tr><th>#</th><th>Code</th><th>Description</th><th>Discount</th><th>Action</th><th style='display:none;'>ID</th></thead><tbody>";
-            var str2="<option value='0'>Select a Coupon</option>";
+            var str="<thead><tr><th>#</th><th>Image</th><th>Rider</th><th>Address</th><th>Status</th><th>Action</th><th style='display:none;'>ID</th><th style='display:none;'>Review</th></thead><tbody>";
             $.ajax({
                 type: 'GET',
-                url: 'https://prodial.dtechblr.in/api/coupon.php',
+                url: 'https://prodial.dtechblr.in/api/rider.php?rider=all',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
                     if(response.success){
                         $.each(response.data, function(index,item){
+                            var il = item['image'];
+                            il = il.split(' ').join('%20');
+                            var src=il;
+                            if(item['image'].indexOf('data:image/')==-1)
+                                src = "data:image/jpeg;base64,";
+                            else
+                                src="";    
+                            src += item['image'];
+                            if(src=="data:image/jpeg;base64,"){
+                                src="https://prodial.dtechblr.in/user.webp";
+                            }
                             
-                            str=str+ "<tr><td><h5>"+(index+1)+"</h5></td><td><h3>"+item.code+"</h3></td><td><h5>"+item.description+"</h5></td><td><h5> ₹ "+item.discount+"</h5></td><td><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td></tr>";
-                            str2 = str2 + "<option value='"+item.id+"'>"+item.code+"</option>";
+                            str=str+ "<tr><td><h4>"+(index+1)+"</h4></td><td><img loading='lazy' class='m-img' src='"+src+"''></td><td><h4>"+item["name"]+"</h4><h5>"+item.phone+"</h5><h6>"+item.email+"</h6></td><td><h6>"+item.address+"</h6></td>";
+                            if(item.status==1){
+                                str=str+"<td><span class='badge badge-pill badge-success'>Available</span></td>";
+                            }
+                            else{
+                                str=str+"<td><span class='badge badge-pill badge-danger'>Unavailable</span></td>";
+                            }
+                            str+="<td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td><td style='display:none;'>"+item.review+"</td></tr>";
                         })
+                        SlickLoader.disable();
                         document.getElementById("user").innerHTML = str+"</tbody>";
-                        document.getElementById("cp").innerHTML = str2;
                     }
                     else{
                         console.log(response.message);
@@ -354,92 +377,77 @@
                     addRowHandlers();
                 }
             });
-            var cs="";
-            SlickLoader.enable();
-            $.ajax({
-                type: 'GET',
-                url: 'https://prodial.dtechblr.in/api/user.php?user=user',
-                dataType: 'json',
-                success: function(response){
-                    console.log(response.success);
-                    if(response.success){
-                        var ul = document.getElementById('ul');
-                        $.each(response.data, function(index,item){
-
-                            cs = cs+'<input type="checkbox" name="'+item.name+'" value="'+item.phone+'"><label style="margin: 5px;">'+item.name+' - '+item.phone+'</label><br>';
-                        })
-                    }
-                    else{
-                        console.log(response.message);
-                    }
-                    SlickLoader.disable();
-                    document.getElementById('ul').innerHTML=cs;
-                }
-            });
+            document.getElementById("close").onclick= function() {
+                document.getElementById("ecard").style.display = "none";
+            };
 
             document.getElementById("rsave").onclick= function() {
                 SlickLoader.enable();
-                var code = document.getElementById("code").value;
-                var desc = document.getElementById("desc").value;
-                var amt = document.getElementById("amt").value;
+                var name = document.getElementById("rname1").value;
+                var phone = document.getElementById("rph").value;
+                var email = document.getElementById("remail").value;
+                var address = document.getElementById("raddr").value;
+                var review = document.getElementById("rabt").value;
 
+                var file= $('#r_id')[0].files[0];
                 var fd = new FormData();
 
-                fd.append('coupon',code);
-                fd.append('description',desc);
-                fd.append('amount',amt);
-                console.log(fd);
+                fd.append('name',name);
+                fd.append('file',file);
+                fd.append('phone',phone);
+                fd.append('email',email);
+                fd.append('address',address);
+                fd.append('review',review);
                 
                 $.ajax({
-                    url: "https://prodial.dtechblr.in/api/coupon.php",
+                    url: "https://prodial.dtechblr.in/api/rider.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
                     processData: false,
                     success: function(response){
-                        console.log(response.success);
+                        console.log(response);
+                        SlickLoader.disable();
                         window.location.reload();
                     }
                 });
-            }; 
-            
-            document.getElementById("assign").onclick= function() {
-                var ul = document.getElementById('ul');
-                let chk = ul.getElementsByTagName('input');
-                var sc = "";
-                for(var i=0;i<chk.length;i++){
-                    if(chk[i].checked){
-                        sc=sc+chk[i].value+",";
-                    }
-                }
-                if(sc.length>0){
-                    sc=sc.substr(0,sc.lastIndexOf(','));
-                }
-                console.log(sc);
-                var code = document.getElementById('cp').value;
+            };
 
-                if(code==0){
-                    alert("Please Select a coupon to assign.");
-                    return;
-                }
+            document.getElementById("rupdate").onclick= function() {
+                SlickLoader.enable();
+                var id = document.getElementById("r_uid").value;
+                var name = document.getElementById("rname").value;
+                var phone = document.getElementById("rph1").value;
+                var email = document.getElementById("remail1").value;
+                var address = document.getElementById("raddr1").value;
+                var review = document.getElementById("rabt1").value;
+
+                var file= $('#rid')[0].files[0];
                 var fd = new FormData();
 
-                fd.append('code',code);
-                fd.append('phones',sc);
-                SlickLoader.enable();
+                fd.append('id',id);
+                fd.append('name',name);
+                fd.append('file',file);
+                fd.append('phone',phone);
+                fd.append('email',email);
+                fd.append('address',address);
+                fd.append('review',review);
+                
                 $.ajax({
-                    url: "https://prodial.dtechblr.in/api/coupon.php",
+                    url: "https://prodial.dtechblr.in/api/rider.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
                     processData: false,
                     success: function(response){
+                        console.log(response);
                         SlickLoader.disable();
-                        console.log(response.success);
                         window.location.reload();
                     }
                 });
-            }; 
+            };
+
+            document.getElementById("ecard").style.display="none";   
             
         });
     </script>

@@ -306,7 +306,13 @@
                                 str=str+"<button type='button' class='btn btn-outline-primary' data-toggle='tooltip'>Assign</button>";
                             }
                             else{
-                                str=str+"<button style='display: none;' type='button' class='btn btn-outline-primary' data-toggle='tooltip'>Assign</button>";
+                                if(item.status==="COMPLETED")
+                                {
+                                    str=str+"<button style='display: none;' type='button' class='btn btn-outline-secondary' data-toggle='tooltip'>Assign</button>";
+                                }
+                                else{
+                                    str=str+"<button type='button' class='btn btn-outline-secondary' data-toggle='tooltip'>Re-Assign</button>";
+                                }
                             }
                             str=str+"<button style='display: none;' type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></span></td><td style='display:none;'>"+item.id+"</td></tr>";
                         })

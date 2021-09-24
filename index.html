@@ -242,13 +242,13 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="user">
+								<div class="col-xl-3 col-md-6"><a href="rider">
 									<div class="card prod-p-card bg-c-yellow">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
 												<div class="col">
 													<h6 class="m-b-5 text-white">Riders</h6>
-													<h3 class="m-b-0 text-white"  id="rider">-</h3>
+													<h3 class="m-b-0 text-white"  id="rider"></h3>
 												</div>
 												<div class="col-auto">
 													<i class="fas fa-motorcycle text-c-yellow f-18"></i>
@@ -453,6 +453,7 @@
 						document.getElementById('category').innerHTML= response.category;
 						document.getElementById('orders').innerHTML= response.orders;
 						document.getElementById('product').innerHTML= response.product;
+						document.getElementById('rider').innerHTML= response.rider;
 						document.getElementById('earning').innerHTML= "₹ "+response.earning;
 					}
 				}

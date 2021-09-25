@@ -7,4 +7,4 @@
 ## Here are a few glimpses of the Admin Panel-
 
 ## Dashboard - Overview of numerical counts of each lists and shortcut to them. Manage Carousal images, delivery charges, referral coupon and profile. 
-<img height="300dp" style="border-radius: 20dp;" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/index.png">
+<img height="300px" border-radius= "20px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/index.png">

@@ -138,48 +138,28 @@
 									<div class="row align-items-center">
 										<div class="col-md-10">
 											<div class="page-header-title">
-												<h5>Coupons</h5>
+												<h5>Notification</h5>
 											</div>
 											<ul class="breadcrumb">
 												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
-												<li class="breadcrumb-item"><a href="#!">Available Coupons</a></li>
+												<li class="breadcrumb-item"><a href="#!">Notify Users</a></li>
 											</ul>
 										</div>
-                                        <div class="input-group col-md-2">
-                                            <input id="myInput" type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                                              aria-describedby="search-addon" onkeyup="search()"/>
-                                            <!-- <button type="button" class="btn-outline-primary">search</button> -->
-                                        </div>
 									</div>
 								</div>
 							</div>
 							<!-- [ breadcrumb ] end -->
 							<!-- [ Main Content ] start -->
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-5">
                                     <div class="card">
                                         <div class="card-header">
-                                            <h5>Coupons</h5>
-                                            <span class="d-block m-t-5">Table containing <code>coupon</code> details</span>
-                                        </div>
-                                        <div class="card-body table-border-style">
-                                            <div class="table-responsive">
-                                                <table id="user" class="table table-hover">
-                                                    
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>Assign Coupon</h5>
+                                            <h5>Send Notification</h5>
                                             <div class="input-group" style="float: right; width: 40%;">
                                                 <input id="myInput2" type="search" class="form-control rounded" placeholder="Search Name, Phone" aria-label="Search"
                                                   aria-describedby="search-addon" onkeyup="searchlist()"/>
                                                   </div>
-                                            <span class="d-block m-t-5">Assign <code>coupons</code> to user</span>
+                                            <span class="d-block m-t-5">Send bulk <code>notifications</code> to user</span>
                                         </div>
                                         <div class="card-body">
                                             <form>
@@ -188,34 +168,14 @@
                                                     
                                                 </div>
                                                 <div class="form-group">
-                                                    <select class="form-control" id="cp">
-                                                    </select>
-                                                </div>
-                                                <button id="assign" style="width: 100%;" type="button" class="btn btn-primary" data-toggle="tooltip">Assign</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <h5>Add Coupon</h5>
-                                            <span class="d-block m-t-5">Add <code>new coupon</code> details here</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <form>
-                                                <div class="form-group">
-                                                    <label>Code</label>
-                                                    <input id="code" type="text" class="form-control" placeholder="Coupon Code" required>
+                                                    <label><code>Notification Title</code></label>
+                                                    <input id="nt" type="text" class="form-control" placeholder="Title" required>
                                                 </div>
                                                 <div class="form-group">
-                                                    <label>Description</label>
-                                                    <input id="desc" type="text" class="form-control" placeholder="Coupon Description" required>
+                                                    <label><code>Notification Body</code></label>
+                                                    <input id="nb" type="text" class="form-control" placeholder="Content" required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>Discount</label>
-                                                    <input id="amt" type="text" class="form-control" placeholder="Discount Amount" required>
-                                                </div>
-                                                <br>
-                                                <button id="rsave" style="width: 100%;" type="button" class="btn btn-success" data-toggle="tooltip">Add Coupon</button>
+                                                <button id="assign" style="width: 100%;" type="button" class="btn btn-primary" data-toggle="tooltip">Notify</button>
                                             </form>
                                         </div>
                                     </div>
@@ -255,26 +215,6 @@
                 }
             }
         }
-        const search = () => {
-            let filter = document.getElementById("myInput").value.toUpperCase();
-            let myTable = document.getElementById("user");
-            let tr = myTable.getElementsByTagName('tr');
-
-            for(var i=0;i<tr.length;i++){
-                let td = tr[i].getElementsByTagName('td')[1];
-                let td1 = tr[i].getElementsByTagName('td')[3];
-                if(td && td1){
-                    let textvalue = td.textContent || td.innerHTML;
-                    let textvalue1 = td1.textContent || td1.innerHTML;
-                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1){
-                        tr[i].style.display="";
-                    }
-                    else{
-                        tr[i].style.display="none";
-                    }
-                }
-            }
-        }
         const searchlist = () => {
             let filter = document.getElementById("myInput2").value.toUpperCase();
             var ul = document.getElementById('ul');
@@ -296,75 +236,16 @@
                 }
             }
         }
-
-        function addRowHandlers() {
-            SlickLoader.enable();
-            var table = document.getElementById("user");
-            var rows = table.getElementsByTagName("tr");
-            for (i = 0; i < rows.length; i++) {
-                var currentRow = table.rows[i];
-                
-                if(i>0){
-                    var del = currentRow.getElementsByTagName("td")[4].getElementsByTagName("button")[0];
-                    var deleteHandler = function(row) {
-                        return function() {
-                            SlickLoader.enable();
-                            var id =  row.getElementsByTagName("td")[5].textContent;
-                            var fd = new FormData();
-                            fd.append('delete',id);
-                            
-                            $.ajax({
-                                url: "https://prodial.dtechblr.in/api/coupon.php",
-                                type: 'post',
-                                data: fd,
-                                contentType: false,
-                                processData: false,
-                                success: function(response){
-                                    SlickLoader.disable();
-                                    window.location.reload();
-                                }
-                            });
-                        };
-                    };
-                    del.onclick = deleteHandler(currentRow);
-                }
-            }
-        }
-
         $(document).ready(function(){
             SlickLoader.enable();
-            var str="<thead><tr><th>#</th><th>Code</th><th>Description</th><th>Discount</th><th>Action</th><th style='display:none;'>ID</th></thead><tbody>";
-            var str2="<option value='0'>Select a Coupon</option>";
-            $.ajax({
-                type: 'GET',
-                url: 'https://prodial.dtechblr.in/api/coupon.php',
-                dataType: 'json',
-                success: function(response){
-                    console.log(response.success);
-                    if(response.success){
-                        $.each(response.data, function(index,item){
-                            
-                            str=str+ "<tr><td><h5>"+(index+1)+"</h5></td><td><h3>"+item.code+"</h3></td><td><h5>"+item.description+"</h5></td><td><h5> ₹ "+item.discount+"</h5></td><td><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td></tr>";
-                            str2 = str2 + "<option value='"+item.id+"'>"+item.code+"</option>";
-                        })
-                        document.getElementById("user").innerHTML = str+"</tbody>";
-                        document.getElementById("cp").innerHTML = str2;
-                    }
-                    else{
-                        console.log(response.message);
-                    }
-                    SlickLoader.disable();
-                    addRowHandlers();
-                }
-            });
             var cs="";
-            SlickLoader.enable();
             $.ajax({
                 type: 'GET',
                 url: 'https://prodial.dtechblr.in/api/user.php?user=user',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
+                    SlickLoader.disable();
                     if(response.success){
                         var ul = document.getElementById('ul');
                         $.each(response.data, function(index,item){
@@ -380,32 +261,6 @@
                 }
             });
 
-            document.getElementById("rsave").onclick= function() {
-                SlickLoader.enable();
-                var code = document.getElementById("code").value;
-                var desc = document.getElementById("desc").value;
-                var amt = document.getElementById("amt").value;
-
-                var fd = new FormData();
-
-                fd.append('coupon',code);
-                fd.append('description',desc);
-                fd.append('amount',amt);
-                console.log(fd);
-                
-                $.ajax({
-                    url: "https://prodial.dtechblr.in/api/coupon.php",
-                    type: 'post',
-                    data: fd,
-                    contentType: false,
-                    processData: false,
-                    success: function(response){
-                        console.log(response.success);
-                        window.location.reload();
-                    }
-                });
-            }; 
-            
             document.getElementById("assign").onclick= function() {
                 var ul = document.getElementById('ul');
                 let chk = ul.getElementsByTagName('input');
@@ -418,20 +273,31 @@
                 if(sc.length>0){
                     sc=sc.substr(0,sc.lastIndexOf(','));
                 }
+                else{
+                    alert("Please select atleast one user");
+                    return;
+                }
+                sc="("+sc+")";
                 console.log(sc);
-                var code = document.getElementById('cp').value;
+                var title = document.getElementById('nt').value;
+                var body = document.getElementById('nb').value;
 
-                if(code==0){
-                    alert("Please Select a coupon to assign.");
+                if(title.length==0){
+                    alert("Please provide notification title");
+                    return;
+                }
+                if(body.length==0){
+                    alert("Please provide notification body");
                     return;
                 }
                 var fd = new FormData();
 
-                fd.append('code',code);
+                fd.append('title',title);
+                fd.append('body',body);
                 fd.append('phones',sc);
                 SlickLoader.enable();
                 $.ajax({
-                    url: "https://prodial.dtechblr.in/api/coupon.php",
+                    url: "https://prodial.dtechblr.in/api/notification.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -443,7 +309,6 @@
                     }
                 });
             }; 
-            
         });
     </script>
 </body>

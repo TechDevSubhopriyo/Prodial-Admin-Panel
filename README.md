@@ -6,5 +6,14 @@
 
 ## Here are a few glimpses of the Admin Panel-
 
-## Dashboard - Overview of numerical counts of each lists and shortcut to them. Manage Carousal images, delivery charges, referral coupon and profile. 
-<img height="300px" border-radius= "20px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/index.png">
+## Dashboard - Overview of numerical counts of each lists and shortcut to them. Manage Carousal images, delivery charges, referral coupon and profile
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/index.png">
+
+## Users - Overview of Users List
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/users.png">
+
+## Orders - Overview of orders placed
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/orders.png">
+
+## Restaurant - Add or Modify Restaurants 
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/restaurant.png">

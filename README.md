@@ -23,3 +23,12 @@
 
 ## Products - Add or Modify products
 <img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/products.png">
+
+## Coupons - Add and Send coupons to users
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/coupon.png">
+
+## Riders - Rider descriptions
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/rider.png">
+
+## Notification - Send notifications to users
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/notification.png">

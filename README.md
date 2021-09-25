@@ -16,4 +16,10 @@
 <img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/orders.png">
 
 ## Restaurant - Add or Modify Restaurants 
-<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/restaurant.png">
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/restaurants.png">
+
+## Categories - Add or Modify Categories
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/category.png">
+
+## Products - Add or Modify products
+<img height="300px" src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/products.png">

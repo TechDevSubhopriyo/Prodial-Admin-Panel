@@ -1,4 +1,9 @@
 # Prodial-Admin-Panel
-### This is an admin panel designed to maintain users, products and orders for prodial food delivery app.
+## This is an admin panel designed to maintain users, products and orders for prodial food delivery app.
 
-<img src="https://www.google.co.in/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+### This Project Belongs to Dwaipayana Technologies, Bangalore (2021)
+<img src="https://dtechblr.in/wp-content/uploads/2019/07/DT-final.png">
+
+## Here are a few glimpses of the Admin Panel-
+|----|----|
+## | Dashboard | <img src="https://github.com/TechDevSubhopriyo/Prodial-Admin-Panel/blob/main/demo_images/index.png"> | 

@@ -352,13 +352,13 @@
 
                         document.getElementById("log").src = img;
                         document.getElementById("title").innerHTML = name;
-                        if(offer_price!=""){
-                            document.getElementById("email").innerHTML = "<strike>Rs. "+price+"</strike>";
-                            document.getElementById("phone").innerHTML = "Rs. "+offer_price;      
+                        if(offer_price!="₹ "){
+                            document.getElementById("email").innerHTML = "<strike>"+price+"</strike>";
+                            document.getElementById("phone").innerHTML = ""+offer_price;      
                         }
                         else{
                             document.getElementById("phone").innerHTML = ""; 
-                            document.getElementById("email").innerHTML = "Rs. "+price;
+                            document.getElementById("email").innerHTML = ""+price;
                         }            
                         document.getElementById("address").innerHTML = "<hr>"+restaurant;
                         document.getElementById("rating").innerHTML = rating+"  "+'<i class="fas fa-star text-c-yellow f-18"></i>';
@@ -447,7 +447,7 @@
                         $.each(response.data, function(index,item){
                             var il = item['image'];
                             il = il.split(' ').join('%20');
-                            str=str+ "<tr><td>"+(index+1)+"</td><td><img loading='lazy' class='m-img' src="+il+"></td><td><h5>"+item["name"]+"</h5></td><td><h5>"+item["price"]+"</h5></td><td><h5>"+item["restaurant_name"]+"</h5></td><td  style='display:none;'><h6>"+item["stock"]+"</h6></td><td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'><h6>"+item["offer_price"]+"</h6></td><td style='display:none;'><h6>"+item["rating"]+"</h6></td><td style='display:none;'><h6>"+item["total_rating"]+"</h6></td><td style='display:none;'><h6>"+item["category_name"]+"</h6></td><td style='display:none;'><h6>"+item["description"]+"</h6></td><td style='display:none;'><h6>"+item["id"]+"</h6></td></tr>";
+                            str=str+ "<tr><td>"+(index+1)+"</td><td><img loading='lazy' class='m-img' src="+il+"></td><td><h5>"+item["name"]+"</h5></td><td><h5>₹ "+item["price"]+"</h5></td><td><h5>"+item["restaurant_name"]+"</h5></td><td  style='display:none;'><h6>"+item["stock"]+"</h6></td><td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'><h6>₹ "+item["offer_price"]+"</h6></td><td style='display:none;'><h6>"+item["rating"]+"</h6></td><td style='display:none;'><h6>"+item["total_rating"]+"</h6></td><td style='display:none;'><h6>"+item["category_name"]+"</h6></td><td style='display:none;'><h6>"+item["description"]+"</h6></td><td style='display:none;'><h6>"+item["id"]+"</h6></td></tr>";
                         })
                         SlickLoader.disable();
                         document.getElementById("user").innerHTML = str+"</tbody>";

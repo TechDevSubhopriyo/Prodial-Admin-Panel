@@ -30,6 +30,10 @@
             height: 40px;
             border-radius: 50%;
         }
+        .proof-img{
+            height: 50px;
+            border-radius: 10%;
+        }
         .btn{
             height: 30px;
             font-size: small;
@@ -340,7 +344,7 @@
         }
         $(document).ready(function(){
             SlickLoader.enable();
-            var str="<thead><tr><th>#</th><th>Image</th><th>Rider</th><th>Address</th><th>Status</th><th>Action</th><th style='display:none;'>ID</th><th style='display:none;'>Review</th></thead><tbody>";
+            var str="<thead><tr><th>#</th><th>Image</th><th>Rider</th><th>Address</th><th>Status</th><th>Action</th><th style='display:none;'>ID</th><th style='display:none;'>Review</th><th>ID Proof</th></thead><tbody>";
             $.ajax({
                 type: 'GET',
                 url: 'https://prodial.dtechblr.in/api/rider.php?rider=all',
@@ -368,7 +372,7 @@
                             else{
                                 str=str+"<td><span class='badge badge-pill badge-danger'>Unavailable</span></td>";
                             }
-                            str+="<td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td><td style='display:none;'>"+item.review+"</td></tr>";
+                            str+="<td><button type='button' class='btn btn-outline-success' data-toggle='tooltip'>Edit</button><button type='button' class='btn btn-outline-danger' data-toggle='tooltip'>Delete</button></td><td style='display:none;'>"+item['id']+"</td><td style='display:none;'>"+item.review+"</td><td><img class='proof-img' src='"+item.proof+"' alt='No ID Proof'></td></tr>";
                         })
                         SlickLoader.disable();
                         document.getElementById("user").innerHTML = str+"</tbody>";
@@ -383,7 +387,6 @@
             document.getElementById("close").onclick= function() {
                 document.getElementById("ecard").style.display = "none";
             };
-
             document.getElementById("rsave").onclick= function() {
                 SlickLoader.enable();
                 var name = document.getElementById("rname1").value;
@@ -402,6 +405,11 @@
                 fd.append('address',address);
                 fd.append('review',review);
                 
+                sms="https://www.fast2sms.com/dev/bulkV2?authorization=3uW5mdY3KowEvKOelfFEw1LAi8VnxyNYX4mKzViFx4plUVWupJegyUT977GH&route=v3&sender_id=TXTIND&message="+"Greetings "+name+", Prodial Rider Account Added. Login with the following credentials Phone-"+phone+" Password-"+phone+"&language=english&flash=0&numbers="+phone;
+                
+                sms=sms.replaceAll(" ","%20");
+                console.log(sms);
+                
                 $.ajax({
                     url: "https://prodial.dtechblr.in/api/rider.php",
                     type: 'post',
@@ -411,9 +419,20 @@
                     success: function(response){
                         console.log(response);
                         SlickLoader.disable();
+                        $.ajax({
+                                type: 'GET',
+                                url: sms,
+                                dataType: 'json',
+                                success: function(response){
+                                    console.log(response.return);
+                                    
+                                }
+                            });
+                        SlickLoader.disable();
                         window.location.reload();
                     }
                 });
+                
             };
 
             document.getElementById("rupdate").onclick= function() {

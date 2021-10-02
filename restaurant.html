@@ -613,6 +613,18 @@
                     processData: false,
                     success: function(response){
                         console.log(response.success);
+                        sms="https://www.fast2sms.com/dev/bulkV2?authorization=3uW5mdY3KowEvKOelfFEw1LAi8VnxyNYX4mKzViFx4plUVWupJegyUT977GH&route=v3&sender_id=TXTIND&message="+"Greetings "+name+", Prodial Restaurant Account Added. Login with the following credentials Phone-"+phone+" Password-"+phone+"&language=english&flash=0&numbers="+phone;
+                        sms=sms.replaceAll(" ","%20");
+                        console.log(sms);
+                        $.ajax({
+                                type: 'GET',
+                                url: sms,
+                                dataType: 'json',
+                                success: function(response){
+                                    console.log(response.return);
+                                    
+                                }
+                            });
                         window.location.reload();
                     }
                 });

@@ -40,7 +40,10 @@
         table{
             overflow: scroll;
         }
-
+        option{
+            padding: 10px;
+            
+        }
     </style>
     <script>
 		try {
@@ -295,8 +298,13 @@
                                                     <textarea class="form-control" id="radr" placeholder="Restaurant Address" rows="3" required></textarea>
                                                 </div>
                                                 <div class="form-group">
+                                                    <label for="lat">Geo Location</label>
+                                                    <input id="lat" type="text" class="form-control" placeholder="Latitude, Longitude" required>
+                                                    <a href="https://www.google.com/maps/" target="_blank">Get Latitude longitude from here</a>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="cat">Select Category</label>
-                                                    <select size="3" class="form-control" id="cat" multiple required>
+                                                    <select size="5" class="form-control" id="cat" multiple required>
                                                     </select>
                                                     <p>Hold down the Ctrl (windows) or Command (Mac) button to select multiple options.</p>
                                                 </div>
@@ -589,6 +597,7 @@
                 var accno = document.getElementById("raccno").value;
                 var ifsc = document.getElementById("rifsc").value;
                 var bname = document.getElementById("rbname").value;
+                var location = document.getElementById("lat").value;
 
                 var file= $('#rlogo')[0].files[0];
                 var fd = new FormData();
@@ -603,6 +612,7 @@
                 fd.append('accno',accno);
                 fd.append('ifsc',ifsc);
                 fd.append('bname',bname);
+                fd.append('location',location);
                 
                 
                 $.ajax({

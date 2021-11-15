@@ -220,6 +220,7 @@
                                     window.location.reload();
                                 }
                             });
+                            SlickLoader.disable();
                         };
                     };
                     del.onclick = delHandler(currentRow);
@@ -255,6 +256,7 @@
                     url: 'https://prodial.dtechblr.in/api/user.php?user=user',
                     dataType: 'json',
                     success: function(response){
+                        SlickLoader.disable();
                         console.log(response.success);
                         if(response.success){
                             $.each(response.data, function(index,item){

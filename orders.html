@@ -237,10 +237,10 @@
                 var currentRow = table.rows[i];
                 
                 if(i>0){
-                    var assign = currentRow.getElementsByTagName("td")[9].getElementsByTagName("button")[0];
+                    var assign = currentRow.getElementsByTagName("td")[10].getElementsByTagName("button")[0];
                     var assignHandler = function(row) {
                         return function() {
-                            var id =  row.getElementsByTagName("td")[10].textContent;
+                            var id =  row.getElementsByTagName("td")[11].textContent;
                             document.getElementById("oid").value = id;
                             console.log(id);
                         };
@@ -252,7 +252,7 @@
         }
         $(document).ready(function(){
             SlickLoader.enable();
-            var str="<thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Address</th><th>Restaurant</th><th>Order ID</th><th>Order</th><th>Amount</th><th>Status</th><th>Action</th><th style='display:none;'>ID</th></thead><tbody>";
+            var str="<thead><tr><th>#</th><th>Name</th><th>Phone</th><th>Address</th><th>Restaurant</th><th>Order ID</th><th>Order</th><th>Amount</th><th>Date</th><th>Status</th><th>Action</th><th style='display:none;'>ID</th></thead><tbody>";
             var stat="";
             $.ajax({
                 type: 'GET',
@@ -292,7 +292,7 @@
                                 }
                                 str=str+ ""+prname+"    ("+items+") - ₹ "+ip+"<br>";
                             })
-                            str=str + "</td><td>₹ "+amt+"</td>";
+                            str=str + "</td><td>₹ "+amt+"</td><td>"+item.created+"</td>";
 
                             if(item.status==="COMPLETED")
                                 str=str+"<td><span class='badge badge-pill badge-success'>"+item.status+"</span></td><td>";

@@ -71,7 +71,7 @@
 			var pass=document.getElementById("password").value; 
 			console.log(user,pass);
 			SlickLoader.enable();
-			var link='https://prodial.dtechblr.in/api/login.php?user='+user+'&pass='+pass;
+			var link='https://prodialexpress.com/api/login.php?user='+user+'&pass='+pass;
 			console.log(link);
 				$.ajax({
 				type: 'GET',
@@ -87,7 +87,7 @@
 							document.cookie = "user="+user+"; SameSite=None; Secure";
 							console.log(document.cookie);
 							
-							window.location.href = "index";
+							window.location.href = "index.html";
 						})
 					
 					}

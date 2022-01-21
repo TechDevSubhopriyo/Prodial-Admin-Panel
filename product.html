@@ -53,11 +53,11 @@
 			  .split('=')[1];
 				console.log(cookieValue);
 				if(cookieValue==""){
-					window.location.href = "login";
+					window.location.href = "login.html";
 				}
 			}
 			catch(err) {
-			  window.location.href = "login";
+			  window.location.href = "login.html";
 			}
 	</script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -78,7 +78,7 @@
 	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
 		<div class="navbar-wrapper ">
 			<div class="navbar-brand header-logo bg-c-yellow">
-				<a href="index" class="b-brand">
+				<a href="index.html" class="b-brand">
 					<img class="h-img" src="assets/images/logo.png" alt="" class="logo images">
 				</a>
 				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
@@ -89,37 +89,37 @@
 						<label>Navigation</label>
 					</li>
 					<li class="nav-item">
-						<a href="index" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+						<a href="index.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="user" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
+						<a href="user.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="orders" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Orders</span></a>
+						<a href="orders.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Orders</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="restaurant" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+						<a href="restaurant.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="category" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+						<a href="category.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="product" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
+						<a href="product.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="coupon" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Coupons</span></a>
+						<a href="coupon.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Coupons</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
+						<a href="offer.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="rider" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Rider</span></a>
+						<a href="rider.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Rider</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="notif" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bell"></i></span><span class="pcoded-mtext">Notification</span></a>
+						<a href="notif.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bell"></i></span><span class="pcoded-mtext">Notification</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
+						<a href="logout.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
 					</li>
 				</ul>
 			</div>
@@ -146,7 +146,7 @@
 												<h5>Products</h5>
 											</div>
 											<ul class="breadcrumb">
-												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
 												<li class="breadcrumb-item"><a href="#!">Available Products</a></li>
 											</ul>
 										</div>
@@ -208,7 +208,7 @@
                                                     <label>Offer Price</label>
                                                     <input id="eoprice" type="text" class="form-control" placeholder="Offer Price in Rs." required>
                                                 </div>
-                                                <div class="form-group">
+                                                <div style="visibility: hidden;" class="form-group">
                                                     <label>Stock</label>
                                                     <input id="estock" type="text" class="form-control" placeholder="Quantity in Stock" required>
                                                 </div>
@@ -241,7 +241,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12" style="margin: 5% 10%;">
-                                                    <h5 id="accno"></h5>
+                                                    <h5 style="visibility: hidden;"  id="accno"></h5>
                                                     <h5 id="ifsc"></h5>
                                                     <h6 id="bname"></h6>
                                                     <h4 id="category"></h4>
@@ -280,13 +280,13 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Price</label>
-                                                    <input id="rprice" type="text" class="form-control" placeholder="Price in Rs." required>
+                                                    <input id="rprice" type="number" class="form-control" placeholder="Price in Rs." required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Offer Price</label>
-                                                    <input id="roprice" type="text" class="form-control" placeholder="Offer Price in Rs." required>
+                                                    <input id="roprice" type="number" class="form-control" placeholder="Offer Price in Rs. (keep blank if no offer)" required>
                                                 </div>
-                                                <div class="form-group">
+                                                <div style="visibility: hidden;" class="form-group">
                                                     <label>Stock</label>
                                                     <input id="rstock" type="text" class="form-control" placeholder="Quantity in Stock" required>
                                                 </div>
@@ -323,7 +323,7 @@
                 if(td && td1){
                     let textvalue = td.textContent || td.innerHTML;
                     let textvalue1 = td1.textContent || td1.innerHTML;
-                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)==0){
+                    if(textvalue.toUpperCase().indexOf(filter)>-1 || textvalue1.toUpperCase().indexOf(filter)>-1){
                         tr[i].style.display="";
                     }
                     else{
@@ -417,7 +417,7 @@
                             SlickLoader.enable();
                             
                             $.ajax({
-                                url: "https://prodial.dtechblr.in/api/product.php",
+                                url: "https://prodialexpress.com/api/product.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
@@ -439,7 +439,7 @@
             var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Price</th><th>Restaurant Name</th><th  style='display:none;'>Stock</th><th>Action</th><th style='display:none;'>Offer Price</th><th style='display:none;'>Rating</th><th style='display:none;'>Total Rating</th><th style='display:none;'>Category</th><th style='display:none;'>Description</th><th style='display:none;'>ID</th></thead><tbody>";
             $.ajax({
                 type: 'GET',
-                url: 'https://prodial.dtechblr.in/api/product.php?product=product',
+                url: 'https://prodialexpress.com/api/product.php?product=product',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -462,7 +462,7 @@
             str2="<option value='0'>Select a Category</option>";
             $.ajax({
                 type: 'GET',
-                url: 'https://prodial.dtechblr.in/api/category.php',
+                url: 'https://prodialexpress.com/api/category.php',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -480,7 +480,7 @@
             str3="<option value='0'>Select a Restaurant</option>";
             $.ajax({
                 type: 'GET',
-                url: 'https://prodial.dtechblr.in/api/restaurants.php?restaurants=restaurants',
+                url: 'https://prodialexpress.com/api/restaurants.php?restaurants=restaurants',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -518,7 +518,7 @@
                 var desc = document.getElementById("rdesc").value;
                 var price = document.getElementById("rprice").value;
                 var oprice = document.getElementById("roprice").value;
-                var stock = document.getElementById("rstock").value;
+                var stock = 0;//document.getElementById("rstock").value;
                 var res = document.getElementById("rest").value;
                 var cat = document.getElementById("cat").value;
                 var file= $('#rlogo')[0].files[0];
@@ -549,7 +549,7 @@
                 
                 SlickLoader.enable();
                 $.ajax({
-                    url: "https://prodial.dtechblr.in/api/product.php",
+                    url: "https://prodialexpress.com/api/product.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -586,7 +586,7 @@
                 
                 SlickLoader.enable();
                 $.ajax({
-                    url: "https://prodial.dtechblr.in/api/product.php",
+                    url: "https://prodialexpress.com/api/product.php",
                     type: 'post',
                     data: fd,
                     contentType: false,

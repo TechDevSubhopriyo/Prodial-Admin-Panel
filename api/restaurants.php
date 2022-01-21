@@ -68,6 +68,7 @@ if(isset($_POST)&& !isset($_POST['id']) && isset($_POST['name']) && isset($_POST
     $ifsc=$_POST['ifsc'];
     $bname=$_POST['bname'];
     $category =$_POST['category'];
+    $lo =$_POST['location'];
     
     $filename = $_FILES['file']['name'];
     $location = "../restaurant_image/".time().$filename;
@@ -75,7 +76,7 @@ if(isset($_POST)&& !isset($_POST['id']) && isset($_POST['name']) && isset($_POST
     
     move_uploaded_file($_FILES['file']['tmp_name'],$location);
     
-    $sql = "INSERT INTO `restaurant` (`id`, `name`, `image`, `phone`, `address`, `email`, `status`, `description`, `rating`, `total_rating`, `accno`, `ifsc`, `bank_name`, `category`,`password`) VALUES (NULL, '$name', '$img', '$phone', '$address', '$email', '', '$description', '0.0', '0', '$accno', '$ifsc', '$bname', '$category','$phone');";
+    $sql = "INSERT INTO `restaurant` (`id`, `name`, `image`, `phone`, `address`, `email`, `status`, `description`, `rating`, `total_rating`, `accno`, `ifsc`, `bank_name`, `category`,`password`, `location`) VALUES (NULL, '$name', '$img', '$phone', '$address', '$email', '0', '$description', '0.0', '0', '$accno', '$ifsc', '$bname', '$category','$phone','$lo');";
     if($conn->query($sql)){
         $result['success']=true;
         $result['message']="Inserted";
@@ -146,19 +147,26 @@ if(isset($_GET) && isset($_GET['category_id'])){
             $index['ifsc']=$row['ifsc'];
             $index['bank_name']=$row['bank_name'];
             $index['category']=$row['category'];
+            $latf= $_GET['lat'];
+            $lngf= $_GET['lng'];
+            $latlng = explode(',',$row['location']);
+            $d = $c->distance($latf,$lngf,$latlng[0],$latlng[1]);
+            $index['distance']=$d;
     
-            array_push($result['data'],$index);
-            
+            if($d<=$c->getMinDistance()){
+                array_push($result['data'],$index);
+            }
+        
         }
     }
     goto print1;
 }
 
-$sql = "SELECT * FROM restaurant WHERE rating >= '4.0' ORDER BY rating DESC";
+$sql = "SELECT * FROM `restaurant`";
 
-if(isset($_GET) && isset($_GET['restaurants'])){
-  $sql = "SELECT * FROM `restaurant` ORDER BY `name` ASC";
-}
+// if(isset($_GET) && isset($_GET['restaurants'])){
+//   $sql = "SELECT * FROM `restaurant` ORDER BY `name` ASC";
+// }
 
 $res = $conn->query($sql);
 if($res->num_rows>0){
@@ -180,8 +188,22 @@ if($res->num_rows>0){
         $index['ifsc']=$row['ifsc'];
         $index['bank_name']=$row['bank_name'];
         $index['category']=$row['category'];
-
-        array_push($result['data'],$index);
+        
+        if(isset($_GET['restaurants']))
+        {
+            array_push($result['data'],$index);
+        }
+		if(isset($_GET['lat']) && isset($_GET['lng'])){
+			$latf= $_GET['lat'];
+			$lngf= $_GET['lng'];
+			$rl = str_replace(' ', '', $row['location']);
+			$latlng = explode(',',$rl);
+			$d = $c->distance($latf,$lngf,$latlng[0],$latlng[1]);
+			$index['distance']=$d;
+            if($d<=$c->getMinDistance()){
+                array_push($result['data'],$index);
+            }
+        }
     }
 }
 if(isset($_GET) && isset($_GET['phone']) && isset($_GET['password'])){

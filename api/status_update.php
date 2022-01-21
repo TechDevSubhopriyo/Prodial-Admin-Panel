@@ -64,7 +64,7 @@ if(isset($_POST) && isset($_POST['order_id'])  && isset($_POST['time'])){
         $to=$ro['fcm'];
         $notif = array(
             'title'=>'Order Updates!',
-            'message'=>'Order is Ready and Waiting to be picked up',
+            'body'=>'Order is Ready and Waiting to be picked up',
             'type'=>1,    // 1-> order, 2-> coupon, 3-> anything
             'id'=>$o
             );
@@ -89,7 +89,7 @@ if(isset($_POST) && isset($_POST['order_id'])  && isset($_POST['time'])){
         $to=$ro['fcm'];
         $notif = array(
             'title'=>'Order Updates!',
-            'message'=>'Order will be Ready in '.$t.' Minutes',
+            'body'=>'Order will be Ready in '.$t.' Minutes',
             'type'=>1,    // 1-> order, 2-> coupon, 3-> anything
             'id'=>$o
             );

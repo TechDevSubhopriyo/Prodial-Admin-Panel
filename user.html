@@ -40,11 +40,11 @@
 			  .split('=')[1];
 				console.log(cookieValue);
 				if(cookieValue==""){
-					window.location.href = "login";
+					window.location.href = "login.html";
 				}
 			}
 			catch(err) {
-			  window.location.href = "login";
+			  window.location.href = "login.html";
 			}
 	</script>
     <link rel="stylesheet" type="text/css" href="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.css">
@@ -64,7 +64,7 @@
 	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
 		<div class="navbar-wrapper ">
 			<div class="navbar-brand header-logo bg-c-yellow">
-				<a href="index" class="b-brand">
+				<a href="index.html" class="b-brand">
 					<img class="h-img" src="assets/images/logo.png" alt="" class="logo images" style="border-radius: 0%;">
 				</a>
 				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
@@ -75,40 +75,39 @@
 						<label>Navigation</label>
 					</li>
 					<li class="nav-item">
-						<a href="index" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+						<a href="index.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="user" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
+						<a href="user.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="orders" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Orders</span></a>
+						<a href="orders.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Orders</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="restaurant" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+						<a href="restaurant.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="category" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+						<a href="category.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="product" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
+						<a href="product.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="coupon" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Coupons</span></a>
+						<a href="coupon.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Coupons</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
+						<a href="offer.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="rider" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Rider</span></a>
+						<a href="rider.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Rider</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="notif" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bell"></i></span><span class="pcoded-mtext">Notification</span></a>
+						<a href="notif.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bell"></i></span><span class="pcoded-mtext">Notification</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
+						<a href="logout.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
 					</li>
 				</ul>
-			
 			</div>
 		</div>
 	</nav>
@@ -133,7 +132,7 @@
 												<h5>Users</h5>
 											</div>
 											<ul class="breadcrumb">
-												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
 												<li class="breadcrumb-item"><a href="#!">User Details</a></li>
 											</ul>
 										</div>
@@ -212,10 +211,11 @@
                             SlickLoader.enable();
                             
                             $.ajax({
-                                url: "https://prodial.dtechblr.in/api/user.php?delete="+id,
+                                url: "https://prodialexpress.com/api/user.php?delete="+id,
                                 type: 'get',
                                 dataType: 'json',
                                 success: function(response){
+                                    SlickLoader.disable();
                                     console.log(response.success);
                                     window.location.reload();
                                 }
@@ -252,9 +252,10 @@
             var str="<thead><tr><th>#</th><th>Image</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Referal Code</th><th>Referred By</th><th>Action</th></tr></thead><tbody>";
                 $.ajax({
                     type: 'GET',
-                    url: 'https://prodial.dtechblr.in/api/user.php?user=user',
+                    url: 'https://prodialexpress.com/api/user.php?user=user',
                     dataType: 'json',
                     success: function(response){
+                        SlickLoader.disable();
                         console.log(response.success);
                         if(response.success){
                             $.each(response.data, function(index,item){
@@ -265,7 +266,7 @@
                                     src="";    
                                 src += item['image'];
                                 if(src=="data:image/jpeg;base64,"){
-                                    src="https://prodial.dtechblr.in/user.webp";
+                                    src="/user.webp";
                                 }
                                 console.log(src);
                                 var address = item.address;

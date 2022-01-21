@@ -46,6 +46,12 @@ if(isset($_GET) && isset($_GET['phone'])  && isset($_GET['password'])){
             $conn->query($sq);
             $index['fcm']=$fcm;
         }
+		if(isset($_GET['loc']) && $_GET['loc']!=''){
+            $location = $_GET['loc'];
+            $rid=$row['id'];
+            $sq="UPDATE `restaurant` SET `location`='$location' WHERE `id` = '$rid' LIMIT 1;";
+            $conn->query($sq);
+        }
         array_push($result['data'],$index);
     }
     else{

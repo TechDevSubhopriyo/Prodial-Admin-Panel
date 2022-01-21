@@ -34,11 +34,11 @@
 			  .split('=')[1];
 				console.log(cookieValue);
 				if(cookieValue==""){
-					window.location.href = "login";
+					window.location.href = "login.html";
 				}
 			}
 			catch(err) {
-			  window.location.href = "login";
+			  window.location.href = "login.html";
 			}
 	</script>
 	<link rel="stylesheet" type="text/css" href="https://unpkg.com/slick-loader@1.1.20/slick-loader.min.css">
@@ -58,7 +58,7 @@
 	<nav class="pcoded-navbar menupos-fixed menu-light brand-blue ">
 		<div class="navbar-wrapper ">
 			<div class="navbar-brand header-logo bg-c-yellow">
-				<a href="index" class="b-brand">
+				<a href="index.html" class="b-brand">
 					<img class="h-img" src="assets/images/logo.png" alt="" class="logo images">
 				</a>
 				<a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
@@ -69,40 +69,38 @@
 						<label>Navigation</label>
 					</li>
 					<li class="nav-item">
-						<a href="index" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+						<a href="index.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
 					</li>
 					<li class="nav-item">
-						<a href="user" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
-					</li>
-					<li class="nav-item">
-						<a href="orders" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Orders</span></a>
+						<a href="user.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-user"></i></span><span class="pcoded-mtext">Users</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="restaurant" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
+						<a href="orders.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Orders</span></a>
 					</li>
                     <li class="nav-item">
-						<a href="category" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
+						<a href="restaurant.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-home"></i></span><span class="pcoded-mtext">Restaurants</span></a>
 					</li>
-					<li class="nav-item">
-						<a href="product" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
+                    <li class="nav-item">
+						<a href="category.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-tag"></i></span><span class="pcoded-mtext">Categories</span></a>
 					</li>
-					<li class="nav-item">
-						<a href="coupon" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Coupons</span></a>
+                    <li class="nav-item">
+						<a href="product.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-briefcase"></i></span><span class="pcoded-mtext">Products</span></a>
 					</li>
-					<li class="nav-item">
-						<a href="offer" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
+                    <li class="nav-item">
+						<a href="coupon.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-box"></i></span><span class="pcoded-mtext">Coupons</span></a>
 					</li>
-					<li class="nav-item">
-						<a href="rider" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Rider</span></a>
+                    <li class="nav-item">
+						<a href="offer.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-percent"></i></span><span class="pcoded-mtext">Offers</span></a>
 					</li>
-					<li class="nav-item">
-						<a href="notif" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bell"></i></span><span class="pcoded-mtext">Notification</span></a>
+                    <li class="nav-item">
+						<a href="rider.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-shopping-cart"></i></span><span class="pcoded-mtext">Rider</span></a>
 					</li>
+                    <li class="nav-item">
+						<a href="notif.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-bell"></i></span><span class="pcoded-mtext">Notification</span></a>
 					<li class="nav-item">
-						<a href="logout" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
+						<a href="logout.html" class="nav-link"><span class="pcoded-micon"><i class="feather icon-lock"></i></span><span class="pcoded-mtext">Logout</span></a>
 					</li>
 				</ul>
-				
 			</div>
 		</div>
 	</nav>
@@ -128,7 +126,7 @@
 												<h5>Home</h5>
 											</div>
 											<ul class="breadcrumb">
-												<li class="breadcrumb-item"><a href="index"><i class="feather icon-home"></i></a></li>
+												<li class="breadcrumb-item"><a href="index.html"><i class="feather icon-home"></i></a></li>
 												<li class="breadcrumb-item"><a href="#!">Analytics Dashboard</a></li>
 											</ul>
 										</div>
@@ -140,7 +138,7 @@
 							<div class="row">
 
 								<!-- product profit start -->
-								<div class="col-xl-3 col-md-6"><a href="user">
+								<div class="col-xl-3 col-md-6"><a href="user.html">
 									<div class="card prod-p-card bg-c-red">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
@@ -156,7 +154,7 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="category">
+								<div class="col-xl-3 col-md-6"><a href="category.html">
 									<div class="card prod-p-card bg-c-blue">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
@@ -172,7 +170,7 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="product">
+								<div class="col-xl-3 col-md-6"><a href="product.html">
 									<div class="card prod-p-card bg-c-green">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
@@ -188,7 +186,7 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="orders">
+								<div class="col-xl-3 col-md-6"><a href="orders.html">
 									<div class="card prod-p-card bg-c-yellow">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
@@ -204,7 +202,7 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="coupon">
+								<div class="col-xl-3 col-md-6"><a href="coupon.html">
 									<div class="card prod-p-card bg-c-green">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
@@ -220,7 +218,7 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="restaurant">
+								<div class="col-xl-3 col-md-6"><a href="restaurant.html">
 									<div class="card prod-p-card bg-c-red">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
@@ -236,7 +234,7 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="rider">
+								<div class="col-xl-3 col-md-6"><a href="rider.html">
 									<div class="card prod-p-card bg-c-yellow">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
@@ -252,7 +250,7 @@
 										</div>
 									</div></a>
 								</div>
-								<div class="col-xl-3 col-md-6"><a href="orders">
+								<div class="col-xl-3 col-md-6"><a href="orders.html">
 									<div class="card prod-p-card bg-c-blue">
 										<div class="card-body">
 											<div class="row align-items-center m-b-25">
@@ -391,7 +389,7 @@
                             fd.append('delete',id);
                             
                             $.ajax({
-                                url: "https://prodial.dtechblr.in/api/carousal.php",
+                                url: "https://prodialexpress.com/api/carousal.php",
                                 type: 'post',
                                 data: fd,
                                 contentType: false,
@@ -413,7 +411,7 @@
             var str="<thead><tr><th>#</th><th>Image</th><th>Action</th><th style='display:none;'>ID</th></tr></thead><tbody>";
 			$.ajax({
 				type: 'GET',
-				url: 'https://prodial.dtechblr.in/api/carousal.php',
+				url: 'https://prodialexpress.com/api/carousal.php',
 				dataType: 'json',
 				success: function(response){
 					console.log(response.success);
@@ -436,7 +434,7 @@
 
 			$.ajax({
 				type: 'GET',
-				url: 'https://prodial.dtechblr.in/api/counts.php',
+				url: 'https://prodialexpress.com/api/counts.php',
 				dataType: 'json',
 				success: function(response){
 					console.log(response.success);
@@ -455,7 +453,7 @@
 
 			$.ajax({
 				type: 'GET',
-				url: 'https://prodial.dtechblr.in/api/profile.php',
+				url: 'https://prodialexpress.com/api/profile.php',
 				dataType: 'json',
 				success: function(response){
 					console.log(response.success);
@@ -478,7 +476,7 @@
 
 				$.ajax({
 					type: 'POST',
-					url: 'https://prodial.dtechblr.in/api/profile.php',
+					url: 'https://prodialexpress.com/api/profile.php',
 					data: fd,
 					contentType: false,
                     processData: false,
@@ -494,7 +492,7 @@
 
 			$.ajax({
 				type: 'GET',
-				url: 'https://prodial.dtechblr.in/api/delivery_charge.php',
+				url: 'https://prodialexpress.com/api/delivery_charge.php',
 				dataType: 'json',
 				success: function(response){
 					console.log(response.success);
@@ -507,7 +505,7 @@
 			var str2="<option value='0'>Select a Coupon</option>";
 			$.ajax({
                 type: 'GET',
-                url: 'https://prodial.dtechblr.in/api/coupon.php',
+                url: 'https://prodialexpress.com/api/coupon.php',
                 dataType: 'json',
                 success: function(response){
                     console.log(response.success);
@@ -532,7 +530,7 @@
                 fd.append('file',file);
                 
                 $.ajax({
-                    url: "https://prodial.dtechblr.in/api/carousal.php",
+                    url: "https://prodialexpress.com/api/carousal.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -554,7 +552,7 @@
                 fd.append('dc',c);
                 
                 $.ajax({
-                    url: "https://prodial.dtechblr.in/api/delivery_charge.php",
+                    url: "https://prodialexpress.com/api/delivery_charge.php",
                     type: 'post',
                     data: fd,
                     contentType: false,
@@ -577,7 +575,7 @@
                 fd.append('rcode',c);
                 
                 $.ajax({
-                    url: "https://prodial.dtechblr.in/api/delivery_charge.php",
+                    url: "https://prodialexpress.com/api/delivery_charge.php",
                     type: 'post',
                     data: fd,
                     contentType: false,

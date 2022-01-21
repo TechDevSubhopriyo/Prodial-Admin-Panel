@@ -1,0 +1,6 @@
+# AuthType Basic
+# AuthName "Restricted Files"
+# AuthUserFile .htpasswd
+# Require valid-user
+
+RewriteRule ^([^\.]+)$ $1.php [NC, L]

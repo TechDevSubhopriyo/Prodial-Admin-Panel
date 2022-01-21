@@ -28,6 +28,8 @@ if(isset($_GET) && isset($_GET['phone'])  && isset($_GET['password'])){
         $index['email']=$row['email'];
         $index['review']=$row['review'];
         $index['status']=$row['status'];
+        $index['geo_location']=$row['geo_location'];
+        $index['phone']=$row['phone'];
         
         array_push($result['data'],$index);
         $result['success']=true;
@@ -69,6 +71,7 @@ if(isset($_GET) && isset($_GET['riders'])){
             $index['email']=$row['email'];
             $index['review']=$row['review'];
             $index['status']=$row['status'];
+            $index['proof']=$row['photo_id'];
             
             array_push($result['data'],$index);
             $result['success']=true;
@@ -91,6 +94,7 @@ if(isset($_GET) && isset($_GET['rider'])){
             $index['email']=$row['email'];
             $index['review']=$row['review'];
             $index['status']=$row['status'];
+            $index['proof']=$row['photo_id'];
             
             array_push($result['data'],$index);
             $result['success']=true;
@@ -110,7 +114,7 @@ if(isset($_POST)  && !isset($_POST['id']) && isset($_POST['name']) && isset($_PO
     
     move_uploaded_file($_FILES['file']['tmp_name'],$location);
     
-    $sql = "INSERT INTO `rider` (`id`,`name`,`phone`,`email`,`address`,`password`,`photo_id`,`review`) VALUES (NULL,'$name','$phone','$email','$address','$phone','$img','$review');";
+    $sql = "INSERT INTO `rider` (`id`,`name`,`phone`,`email`,`address`,`password`,`photo_id`,`review`,`status`) VALUES (NULL,'$name','$phone','$email','$address','$phone','$img','$review','0');";
     
     if($conn->query($sql))
     {
@@ -121,6 +125,22 @@ if(isset($_POST)  && !isset($_POST['id']) && isset($_POST['name']) && isset($_PO
     }
 }
 
+if(isset($_POST) && isset($_POST['id']) && isset($_POST['geo_location']))
+{
+    $g=$_POST['geo_location'];
+    $id = $_POST['id'];
+    $sql= "UPDATE `rider` SET `geo_location`='$g' ";
+    $sql.=" WHERE `id`= '$id' LIMIT 1;";
+    
+    if($conn->query($sql))
+    {
+        $result['success']=true;
+        $result['message']="Location Updated";
+    }
+    else{
+        $result['message']="Some error Occured";
+    }
+}
 if(isset($_POST) && isset($_POST['id']) && isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email'])  && isset($_POST['address'])){
     $name = $_POST['name'];
     $phone = $_POST['phone'];
@@ -128,8 +148,12 @@ if(isset($_POST) && isset($_POST['id']) && isset($_POST['name']) && isset($_POST
     $address= $_POST['address'];
     $id = $_POST['id'];
     
-    $sql = "UPDATE `rider` SET `name`='$name',`phone`='$phone',`email`='$email',`address`='$address',`password`='$password' ";
-    
+    $sql = "UPDATE `rider` SET `name`='$name',`phone`='$phone',`email`='$email',`address`='$address'  ";
+    if(isset($_POST['geo_location']))
+    {
+        $g=$_POST['geo_location'];
+        $sql= "UPDATE `rider` SET `geo_location`='$g' ";
+    }
     if(isset($_FILES['file']))
     {
         $filename = $_FILES['file']['name'];
